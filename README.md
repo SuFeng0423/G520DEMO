@@ -4,13 +4,23 @@
 
 ## 在线访问
 
-码云 **个人版已无 Gitee Pages**（服务菜单里不会出现），请使用 Raw 直链分享：
+> **注意：** 码云 Raw 链接只会显示 HTML **源码**，无法渲染成页面（个人版已无 Gitee Pages）。
+
+### 临时预览（免部署）
 
 ```
-https://gitee.com/sf_0423/g520-demo/raw/master/index.html
+https://htmlpreview.github.io/?https://gitee.com/sf_0423/g520-demo/raw/master/index.html
 ```
 
-所有人可访问，无需登录。说明见 **[docs/PAGES.md](docs/PAGES.md)**。
+### 正式访问（推荐 GitHub Pages）
+
+将仓库同步到 GitHub 并开启 Pages 后：
+
+```
+https://你的用户名.github.io/g520-demo/
+```
+
+详细步骤见 **[docs/PAGES.md](docs/PAGES.md)**（含 GitHub Pages、国内托管备选）。
 
 ## 本地预览
 

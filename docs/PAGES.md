@@ -1,47 +1,75 @@
 # 公开访问说明
 
-## 为什么没有 Gitee Pages？
+## 为什么 Raw 链接只显示源码？
 
-码云 **个人版仓库已不再提供 Gitee Pages**（2024 年起下线），因此在仓库 **服务** 菜单里看不到 Pages 入口——这是平台政策，不是项目配置问题。
+访问  
+`https://gitee.com/sf_0423/g520-demo/raw/master/index.html`  
+时，码云返回 **`Content-Type: text/plain`**，浏览器按「纯文本」展示 HTML 源码，**不会渲染成网页**。
 
-企业版仓库才可能有 Pages 类服务；当前 `g520-demo` 为个人公开仓库。
-
----
-
-## 推荐：Raw 直链（已可用，无需额外配置）
-
-仓库公开后，可直接分享以下地址，完整加载 HTML / CSS / JS / 流程串联：
-
-```
-https://gitee.com/sf_0423/g520-demo/raw/master/index.html
-```
-
-**特点：**
-- 所有人可访问，无需登录
-- 支持「进入流程体验」逐步浏览
-- URL 较长，但稳定、免费
-
-可将此链接写入 README、文档或发给客户。
+这是码云 Raw 文件的默认行为；个人仓库 **已无 Gitee Pages**，无法像以前一样用 `用户名.gitee.io` 托管。
 
 ---
 
-## 可选：更短域名（需第三方托管）
+## 方案一：在线预览（免部署，立即可用）
 
-若需要类似 `xxx.com` 的短链接，可将同一套静态文件部署到：
+通过 HTML Preview 服务加载码云上的文件（相对路径 CSS/JS 可正常加载）：
+
+```
+https://htmlpreview.github.io/?https://gitee.com/sf_0423/g520-demo/raw/master/index.html
+```
+
+> 国内访问该预览域名可能较慢或被墙，适合临时演示；正式对外建议用方案二。
+
+---
+
+## 方案二：GitHub Pages（推荐 · 免费 · 稳定）
+
+代码仍在码云维护，同步一份到 GitHub 即可免费托管：
+
+### 1. 在 GitHub 新建空仓库
+
+名称建议：`g520-demo`（与码云一致）
+
+### 2. 推送代码（不含 zl）
+
+```bash
+cd DEOM
+git remote add github https://github.com/你的用户名/g520-demo.git
+git push github master
+```
+
+### 3. 开启 Pages
+
+GitHub 仓库 → **Settings** → **Pages** → Source 选 **Deploy from a branch** → Branch 选 `master`、目录 `/` → Save
+
+### 4. 访问
+
+约 1 分钟后：
+
+```
+https://你的用户名.github.io/g520-demo/
+```
+
+仓库已含 `.github/workflows/pages.yml`，推送到 GitHub 后也可自动部署 Pages。
+
+---
+
+## 方案三：国内静态托管（访问更快）
+
+将 `DEOM` 目录（**不要包含 zl/**）上传到：
 
 | 平台 | 说明 |
 |------|------|
-| [GitHub Pages](https://pages.github.com/) | 免费，国内访问可能较慢 |
-| [腾讯云 EdgeOne Pages](https://pages.edgeone.ai/) | 国内访问较快，有免费额度 |
+| [EdgeOne Pages](https://pages.edgeone.ai/) | 腾讯云，有免费额度 |
 | [Upma 上码](https://www.upma.cn/) | 国内静态托管，适合 Demo |
-
-代码仍在码云维护；托管平台可从 Gitee 拉取或手动上传 `DEOM` 目录（**不含 `zl/`**）。
 
 ---
 
-## 码云「服务」菜单中的项
+## 码云仓库的作用
 
-截图中的 SonarQube、Jenkins、腾讯云托管等均为 **第三方集成**，不是 Pages 替代品。静态 HTML 原型 **不需要** 开通这些服务。
+- **代码托管与版本管理**（主仓库）
+- **Raw 链接**仅适合查看/下载文件，**不适合**直接给客户演示
+- **服务**菜单中的 Jenkins、腾讯云等与本静态 HTML 无关，无需开通
 
 ---
 
@@ -50,5 +78,5 @@ https://gitee.com/sf_0423/g520-demo/raw/master/index.html
 ```bash
 cd DEOM
 python3 -m http.server 8080
-# 浏览器打开 http://localhost:8080
+# http://localhost:8080
 ```
