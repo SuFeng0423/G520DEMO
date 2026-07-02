@@ -4,17 +4,23 @@
 
 ## 在线访问
 
-启用 [Gitee Pages](https://gitee.com/help/articles/4136) 后，访问：
+### 正式地址（需先开启 Pages）
 
 ```
 https://sf_0423.gitee.io/g520-demo/
 ```
 
-即打开 `index.html` 流程总览页。
+**若出现 404**：代码已上传，但 **Gitee Pages 尚未启动**。请按 **[docs/PAGES.md](docs/PAGES.md)** 操作（约 2 分钟）：
 
-**Pages 开启步骤：** 仓库 → 服务 → Gitee Pages → 部署分支 `master`、目录 `/` → 启动。
+1. 仓库 → **服务** → **Gitee Pages**
+2. 分支 `master`、目录 `/` → **启动**
+3. 等待部署完成后访问上列地址
 
-请将仓库设为**公开**，以便所有人无需登录即可访问。
+### 临时预览（Pages 未开时可用）
+
+```
+https://gitee.com/sf_0423/g520-demo/raw/master/index.html
+```
 
 ## 本地预览
 
