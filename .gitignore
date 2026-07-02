@@ -1,0 +1,9 @@
+# 内部报价文档，不上传
+zl/
+
+# 系统与工具
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+venv/

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=640">
+  <title>13 数据关联入库 — AI版</title>
+  <link rel="stylesheet" href="../../css/prototype.css">
+</head>
+<body>
+  <div class="glasses-screen glasses-screen--ai">
+    <div class="glasses-screen__status">
+      <span><span class="glasses-screen__status-dot"></span>比对入库</span>
+      <span>96%</span>
+    </div>
+    <div class="glasses-screen__body">
+      <div class="glasses-screen__content" style="padding-top:6px;">
+        <div class="ai-result-box ai-result-box--highlight" style="margin-bottom:8px;">
+          <div class="confidence-row">
+            <span>系统匹配</span>
+            <span class="confidence-row__val confidence-row__val--pass">96%</span>
+          </div>
+          <div class="confidence-bar"><div class="confidence-bar__fill confidence-bar__fill--high"></div></div>
+        </div>
+        <div class="ai-field-row ai-field-row--matched ai-field-row--focus">
+          <span class="ai-field-row__label">PO</span>
+          <span class="ai-field-row__value">PO-2025-88421</span>
+          <span class="confidence-row__val confidence-row__val--pass">✓</span>
+        </div>
+        <div class="ai-field-row ai-field-row--matched">
+          <span class="ai-field-row__label">件号</span>
+          <span class="ai-field-row__value">A-1024</span>
+          <span class="confidence-row__val confidence-row__val--warn">映射</span>
+        </div>
+        <div class="ai-field-row ai-field-row--matched">
+          <span class="ai-field-row__label">数量</span>
+          <span class="ai-field-row__value">500</span>
+          <span class="confidence-row__val confidence-row__val--pass">✓</span>
+        </div>
+      </div>
+      <div class="glasses-screen__footer">
+        <div class="glasses-screen__hint">⟳ 编辑 · ● 确认入库</div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-buttons" style="width:640px;margin-top:12px;">
+    <a class="nav-btn" href="12-ai-invoice-capture.html">← 发票识别</a>
+    <a class="nav-btn" href="14-task-complete.html">下一屏：入库完成 →</a>
+  </div>
+  <script src="../../js/flow-nav.js"></script>
+</body>
+</html>

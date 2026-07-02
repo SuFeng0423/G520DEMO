@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>智能眼镜 · 目视检查 — 项目原型总览</title>
+  <link rel="stylesheet" href="css/prototype.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body class="index-page">
+  <input type="checkbox" id="ai-mode-check" aria-hidden="true">
+
+  <div class="flow-overview">
+    <div class="index-page__hero">
+      <label class="ai-mode-toggle" for="ai-mode-check" title="切换增强版原型">
+        <span class="ai-mode-toggle__label">增强</span>
+        <span class="ai-mode-toggle__track"><span class="ai-mode-toggle__thumb"></span></span>
+      </label>
+      <h1>智能眼镜 · 通用目视检查 — 项目原型</h1>
+      <p>设备：双目全彩 · 屏幕 640×400 · 交互：语音 + 滚轮 + 按钮 · 前置：登录 → 选工单 → 确认作业</p>
+      <div class="flow-entry">
+        <a class="flow-entry__btn flow-entry__btn--basic" id="entry-flow" href="screens/01-login.html?flow=basic">进入流程体验 →</a>
+        <p class="flow-entry__hint flow-entry__hint--basic">从登录开始逐步浏览：拍照留底 → 回看 → 上传 → 结束任务</p>
+        <p class="flow-entry__hint flow-entry__hint--ai">从登录开始逐步浏览：能力菜单 → 识别置信度 → 比对入库 → 结束任务</p>
+      </div>
+    </div>
+
+    <!-- 版本对比：切换增强模式后展示 -->
+    <div class="version-compare" id="version-compare">
+      <div class="version-compare__col version-compare__col--basic">
+        <h3>基础版</h3>
+        <ul>
+          <li><strong>拍照留底</strong> — <span>全语音解放双手，仅采集全彩图像</span></li>
+          <li><strong>镜头预览</strong> — <span>开关预览、调整位置</span></li>
+          <li><strong>设备端检视</strong> — <span>放大、移动、切换照片</span></li>
+          <li><strong>留档上传</strong> — <span>按当前工单挂接至收货系统</span></li>
+        </ul>
+      </div>
+      <div class="version-compare__col version-compare__col--ai">
+        <h3>AI 算法版（增强版）</h3>
+        <ul>
+          <li><strong>紧固件视觉计数</strong> — <span>输出数量 + 置信度，准确率要求 ≥98%</span></li>
+          <li><strong>外文证书视觉翻译</strong> — <span>逐段翻译 + 段落置信度</span></li>
+          <li><strong>外文发票信息捕捉</strong> — <span>PO / 件号 / 数量等，逐字段置信度</span></li>
+          <li><strong>数据关联入库</strong> — <span>系统比对 + 设备端编辑 → 标准入库数据</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===== 基础版 ===== -->
+    <div id="view-standard" class="version-panel">
+      <div class="logic-note">
+        <h3>基础版逻辑 · 拍照留底</h3>
+        确认作业后进入<strong>拍照留底模式</strong>：双目全彩预览 → 全语音拍照 → 设备端回看 → 按工单上传留档。
+      </div>
+
+      <div class="flow-steps">
+        <span class="flow-step flow-step--active">① 登录</span><span class="flow-arrow">→</span>
+        <span class="flow-step flow-step--active">② 选工单</span><span class="flow-arrow">→</span>
+        <span class="flow-step flow-step--active">③ 确认作业</span><span class="flow-arrow">→</span>
+        <span class="flow-step flow-step--active">④ 预览/拍照</span><span class="flow-arrow">→</span>
+        <span class="flow-step flow-step--active">⑤ 回看</span><span class="flow-arrow">→</span>
+        <span class="flow-step flow-step--active">⑥ 上传留档</span><span class="flow-arrow">→</span>
+        <span class="flow-step flow-step--active">⑦ 结束任务</span>
+      </div>
+
+      <div class="zone-dark">
+        <div class="zone-dark__label">▸ 基础版流程 · 图像采集与工单挂接</div>
+        <div class="interaction-map">
+          <svg viewBox="0 0 1100 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="1100" height="200" fill="#0a0e14"/>
+            <text x="550" y="24" text-anchor="middle" fill="#00d4aa" font-size="13" font-family="PingFang SC,sans-serif">登录 → 工单 → 全语音拍照留底 → 工单挂接上传</text>
+            <rect x="30" y="50" width="80" height="36" rx="4" fill="#141b24" stroke="#00d4aa"/><text x="70" y="72" text-anchor="middle" fill="#e8eef4" font-size="10" font-family="PingFang SC,sans-serif">登录</text>
+            <rect x="130" y="50" width="90" height="36" rx="4" fill="#141b24" stroke="#00d4aa"/><text x="175" y="72" text-anchor="middle" fill="#e8eef4" font-size="10" font-family="PingFang SC,sans-serif">选工单</text>
+            <rect x="240" y="50" width="100" height="36" rx="4" fill="#141b24" stroke="#00d4aa"/><text x="290" y="72" text-anchor="middle" fill="#e8eef4" font-size="10" font-family="PingFang SC,sans-serif">确认作业</text>
+            <rect x="360" y="50" width="110" height="36" rx="4" fill="#141b24" stroke="#6eb5ff"/><text x="415" y="72" text-anchor="middle" fill="#e8eef4" font-size="10" font-family="PingFang SC,sans-serif">预览/拍照</text>
+            <rect x="490" y="50" width="90" height="36" rx="4" fill="#141b24" stroke="#6eb5ff"/><text x="535" y="72" text-anchor="middle" fill="#e8eef4" font-size="10" font-family="PingFang SC,sans-serif">回看</text>
+            <rect x="600" y="50" width="100" height="36" rx="4" fill="#141b24" stroke="#ff9f43"/><text x="650" y="72" text-anchor="middle" fill="#e8eef4" font-size="10" font-family="PingFang SC,sans-serif">上传留档</text>
+            <rect x="720" y="50" width="90" height="36" rx="4" fill="#141b24" stroke="#00d4aa"/><text x="765" y="72" text-anchor="middle" fill="#e8eef4" font-size="10" font-family="PingFang SC,sans-serif">结束任务</text>
+            <text x="40" y="120" fill="#8a9bb0" font-size="10" font-family="PingFang SC,sans-serif">上传成功 → 继续检查 或 「结束任务」→ 返回工单列表（流程闭环）</text>
+            <text x="40" y="145" fill="#6eb5ff" font-size="10" font-family="PingFang SC,sans-serif">双目全彩：预览与留底均为全彩图像，HUD 仅叠加操作提示</text>
+            <text x="40" y="175" fill="#00d4aa" font-size="10" font-family="PingFang SC,sans-serif">上传完成 → 继续拍照 或 结束任务</text>
+          </svg>
+        </div>
+      </div>
+      <div class="screen-grid" id="screens-standard"></div>
+    </div>
+
+    <!-- ===== 增强版 ===== -->
+    <div id="view-ai" class="version-panel" hidden>
+      <div class="logic-note">
+        <h3>增强版逻辑 · 辅助功能</h3>
+        确认作业后进入<strong>增强能力菜单</strong>（非直接拍照）：选择能力 → 拍照识别 → 置信度/准确率 → 修正 → 比对入库 → 结束任务。<br>
+        登录、选工单与基础版相同；<strong>从确认作业开始流程即不同</strong>。
+      </div>
+
+      <div class="flow-steps">
+        <span class="flow-step flow-step--active">① 登录</span><span class="flow-arrow">→</span>
+        <span class="flow-step flow-step--active">② 选工单</span><span class="flow-arrow">→</span>
+        <span class="flow-step flow-step--ai">③ 确认作业</span><span class="flow-arrow">→</span>
+        <span class="flow-step flow-step--ai">④ 选增强能力</span><span class="flow-arrow">→</span>
+        <span class="flow-step flow-step--ai">⑤ 识别+置信度</span><span class="flow-arrow">→</span>
+        <span class="flow-step flow-step--ai">⑥ 比对/入库</span><span class="flow-arrow">→</span>
+        <span class="flow-step flow-step--ai">⑦ 结束任务</span>
+      </div>
+
+      <!-- 增强版：核心差异并排对比 -->
+      <div class="side-by-side-compare">
+        <div class="side-by-side-compare__col side-by-side-compare__col--basic">
+          <div class="side-by-side-compare__label">基础版 · 纯拍照留底</div>
+          <div class="side-by-side-compare__frame">
+            <iframe src="screens/04-inspection-preview-on.html" width="640" height="400" frameborder="0" title="基础版拍照"></iframe>
+          </div>
+        </div>
+        <div class="side-by-side-compare__col side-by-side-compare__col--enhanced">
+          <div class="side-by-side-compare__label">增强版 · 算法识别 + 置信度</div>
+          <div class="side-by-side-compare__frame">
+            <iframe src="screens/ai/10-ai-fastener-count.html" width="640" height="400" frameborder="0" title="增强版计数"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="zone-dark">
+        <div class="zone-dark__label">▸ 增强版流程 · 信息提取 + 置信度 + 准确率 + 设备端入库</div>
+        <div class="interaction-map">
+          <svg viewBox="0 0 1100 240" xmlns="http://www.w3.org/2000/svg">
+            <rect width="1100" height="240" fill="#0a0e14"/>
+            <text x="550" y="24" text-anchor="middle" fill="#9d8fff" font-size="13" font-family="PingFang SC,sans-serif">增强版 · 四项能力独立或串联（发票→比对→入库）</text>
+            <rect x="30" y="44" width="80" height="32" rx="4" fill="#141b24" stroke="#00d4aa"/><text x="70" y="64" text-anchor="middle" fill="#e8eef4" font-size="9" font-family="PingFang SC,sans-serif">登录</text>
+            <rect x="130" y="44" width="80" height="32" rx="4" fill="#141b24" stroke="#00d4aa"/><text x="170" y="64" text-anchor="middle" fill="#e8eef4" font-size="9" font-family="PingFang SC,sans-serif">选工单</text>
+            <rect x="230" y="44" width="90" height="32" rx="4" fill="#141b24" stroke="#7c6cf0"/><text x="275" y="64" text-anchor="middle" fill="#e8eef4" font-size="9" font-family="PingFang SC,sans-serif">确认</text>
+            <rect x="340" y="44" width="90" height="32" rx="4" fill="#141b24" stroke="#7c6cf0"/><text x="385" y="64" text-anchor="middle" fill="#e8eef4" font-size="9" font-family="PingFang SC,sans-serif">能力菜单</text>
+            <rect x="60" y="100" width="110" height="32" rx="4" fill="#141b24" stroke="#7c6cf0"/><text x="115" y="120" text-anchor="middle" fill="#9d8fff" font-size="9" font-family="PingFang SC,sans-serif">紧固件计数≥98%</text>
+            <rect x="190" y="100" width="100" height="32" rx="4" fill="#141b24" stroke="#7c6cf0"/><text x="240" y="120" text-anchor="middle" fill="#9d8fff" font-size="9" font-family="PingFang SC,sans-serif">证书翻译</text>
+            <rect x="310" y="100" width="100" height="32" rx="4" fill="#141b24" stroke="#7c6cf0"/><text x="360" y="120" text-anchor="middle" fill="#9d8fff" font-size="9" font-family="PingFang SC,sans-serif">发票OCR</text>
+            <rect x="430" y="100" width="120" height="32" rx="4" fill="#141b24" stroke="#7c6cf0"/><text x="490" y="120" text-anchor="middle" fill="#9d8fff" font-size="9" font-family="PingFang SC,sans-serif">比对+设备入库</text>
+            <line x1="385" y1="76" x2="385" y2="88" stroke="#7c6cf0" stroke-dasharray="3"/>
+            <line x1="115" y1="88" x2="490" y2="88" stroke="#7c6cf0" stroke-dasharray="3"/>
+            <text x="40" y="160" fill="#9d8fff" font-size="10" font-family="PingFang SC,sans-serif">每项输出：结构化结果 + 置信度/准确率 · 低于阈值必须人工确认</text>
+            <text x="40" y="182" fill="#8a9bb0" font-size="10" font-family="PingFang SC,sans-serif">计数：滚轮±修正 · 翻译：滚轮选段落重译 · OCR：滚轮选字段编辑 · 入库：滚轮编辑后「确认入库」</text>
+            <text x="40" y="210" fill="#ff9f43" font-size="10" font-family="PingFang SC,sans-serif">串联路径：发票OCR → 数据比对 → 设备端编辑 → 生成与电脑录入一致的入库数据</text>
+          </svg>
+        </div>
+      </div>
+      <div class="screen-grid" id="screens-ai"></div>
+    </div>
+
+    <div class="spec-note" id="spec-note">
+      <h3>交互与设备规格</h3>
+      <strong>硬件：</strong>双目全彩智能眼镜 · 640×400 显示<br>
+      <strong>输入：</strong>语音（全场景）+ 滚轮 + 按钮（短按确认 / 长按返回或拖动）<br>
+      <span id="spec-basic"><strong>基础版：</strong>拍照、预览、留档、按工单上传</span><br>
+      <span id="spec-enhanced" hidden><strong>增强版：</strong>信息提取 + 置信度/准确率 + 低置信度修正 + 设备端入库</span><br>
+      <strong>体验：</strong>顶部「进入流程体验」从登录串联至结束 · 各屏也可单独打开<br>
+      <strong>文件：</strong><code>screens/</code> 基础屏 · <code>screens/ai/</code> 增强屏
+    </div>
+  </div>
+
+  <script>
+    const STANDARD_SCREENS = [
+      { num: '01', name: '登录', desc: '滚轮切换工号/密码，按钮或语音「登录」', src: 'screens/01-login.html' },
+      { num: '02', name: '选择工单', desc: '滚轮浏览待检工单，按钮或语音选中', src: 'screens/02-work-order-list.html' },
+      { num: '03', name: '确认作业信息', desc: '核对后「开始检查」进入拍照留底', src: 'screens/03-work-order-confirm.html' },
+      { num: '04', name: '预览开启 · 全语音拍照', desc: '双目全彩预览，调位置/开关，采集图像', src: 'screens/04-inspection-preview-on.html' },
+      { num: '05', name: '预览关闭 · 拍照', desc: '释放视野，角标待命，仍可全彩拍摄', src: 'screens/05-inspection-preview-off.html' },
+      { num: '06', name: '全彩照片回看', desc: '设备端放大/移动/切换', src: 'screens/06-photo-review.html' },
+      { num: '07', name: '上传留档 · 工单挂接', desc: '按当前工单挂接至收货系统', src: 'screens/07-upload-match-success.html' },
+      { num: '08', name: '上传异常 · 本地缓存', desc: '（分支）网络失败时本地缓存补传', src: 'screens/08-upload-match-fail.html', branch: true },
+      { num: '09', name: '上传完成', desc: '留档成功，可选继续检查或结束任务', src: 'screens/09-upload-complete.html' },
+      { num: '10', name: '结束任务', desc: '本单完成，返回工单列表（流程终点）', src: 'screens/10-task-end.html' },
+    ];
+
+    const AI_SCREENS = [
+      { num: '01', name: '登录', desc: '与基础版相同 · 增强流程统一起点', src: 'screens/01-login.html' },
+      { num: '02', name: '选择工单', desc: '与基础版相同 · 确认后进入增强能力菜单', src: 'screens/02-work-order-list.html' },
+      { num: '03', name: '确认作业 · 增强版', desc: '与基础版不同：确认后进入能力菜单（非直接拍照）', src: 'screens/ai/03-work-order-confirm-ai.html', enhanced: true },
+      { num: '09', name: '增强能力菜单', desc: '四项辅助能力，拍照后触发算法', src: 'screens/ai/09-ai-hub.html', enhanced: true },
+      { num: '10', name: '紧固件视觉计数', desc: '数量+置信度，准确率≥98%，可滚轮修正', src: 'screens/ai/10-ai-fastener-count.html', enhanced: true },
+      { num: '11', name: '外文证书翻译', desc: '逐段翻译+段落置信度，低置信度可重译', src: 'screens/ai/11-ai-cert-translate.html', enhanced: true },
+      { num: '12', name: '外文发票信息捕捉', desc: 'PO/件号/数量逐字段置信度', src: 'screens/ai/12-ai-invoice-capture.html', enhanced: true },
+      { num: '13', name: '数据关联 · 设备端入库', desc: '系统比对+设备编辑，生成标准入库数据', src: 'screens/ai/13-ai-data-entry.html', enhanced: true },
+      { num: '14', name: '入库完成 · 结束任务', desc: '结构化数据已提交，返回工单列表', src: 'screens/ai/14-task-complete.html', enhanced: true },
+    ];
+
+    function renderScreens(list, containerId) {
+      document.getElementById(containerId).innerHTML = list.map(s => `
+        <div class="screen-card${s.enhanced ? ' screen-card--ai' : ''}${s.branch ? ' screen-card--branch' : ''}">
+          <div class="screen-card__info">
+            <div class="screen-card__header">
+              <span class="screen-card__num">${s.num}</span>
+              <span class="screen-card__name">${s.name}${s.enhanced ? '<span class="ai-badge">增强</span>' : ''}${s.branch ? '<span class="ai-badge" style="border-color:var(--warn);color:var(--warn);">分支</span>' : ''}</span>
+              <a class="screen-card__link" href="${s.src}" target="_blank">单独打开 →</a>
+            </div>
+          </div>
+          <p class="screen-card__desc">${s.desc}</p>
+          <div class="screen-card__preview">
+            <iframe src="${s.src}" width="640" height="400" frameborder="0" title="${s.name}"></iframe>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    renderScreens(STANDARD_SCREENS, 'screens-standard');
+    renderScreens(AI_SCREENS, 'screens-ai');
+
+    const check = document.getElementById('ai-mode-check');
+    const viewStd = document.getElementById('view-standard');
+    const viewAi = document.getElementById('view-ai');
+    const specBasic = document.getElementById('spec-basic');
+    const specEnhanced = document.getElementById('spec-enhanced');
+
+    const entryFlow = document.getElementById('entry-flow');
+
+    function applyMode(enhanced) {
+      check.checked = enhanced;
+      document.body.classList.toggle('index-page--enhanced', enhanced);
+      viewStd.hidden = enhanced;
+      viewAi.hidden = !enhanced;
+      specBasic.hidden = enhanced;
+      specEnhanced.hidden = !enhanced;
+      entryFlow.href = enhanced ? 'screens/01-login.html?flow=ai' : 'screens/01-login.html?flow=basic';
+      entryFlow.className = enhanced ? 'flow-entry__btn flow-entry__btn--ai' : 'flow-entry__btn flow-entry__btn--basic';
+      document.title = enhanced
+        ? '智能眼镜 · 增强版原型'
+        : '智能眼镜 · 目视检查 — 项目原型总览';
+    }
+
+    if (localStorage.getItem('deom-ai-mode') === '1') applyMode(true);
+
+    check.addEventListener('change', () => {
+      applyMode(check.checked);
+      localStorage.setItem('deom-ai-mode', check.checked ? '1' : '0');
+    });
+  </script>
+</body>
+</html>

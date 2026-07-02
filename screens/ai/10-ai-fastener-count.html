@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=640">
+  <title>10 紧固件视觉计数 — AI版</title>
+  <link rel="stylesheet" href="../../css/prototype.css">
+</head>
+<body>
+  <div class="glasses-screen glasses-screen--ai">
+    <div class="glasses-screen__status">
+      <span><span class="glasses-screen__status-dot"></span>紧固件计数</span>
+      <span>完成</span>
+    </div>
+    <div class="glasses-screen__body">
+      <div class="glasses-screen__content" style="display:flex;gap:10px;padding-top:8px;">
+        <div class="ai-split-view__img" style="flex:1;position:relative;overflow:hidden;min-height:200px;">
+          <div class="ai-scan-line"></div>
+          检测 ×128
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:8px;">
+          <div class="ai-count-display" style="padding:0;">
+            <div class="ai-count-display__num">128</div>
+            <div class="ai-count-display__unit">个</div>
+          </div>
+          <div class="ai-result-box ai-result-box--highlight">
+            <div class="confidence-row">
+              <span class="ai-result-box__label">置信度</span>
+              <span class="confidence-row__val confidence-row__val--pass">98.6%</span>
+            </div>
+            <div class="confidence-bar"><div class="confidence-bar__fill confidence-bar__fill--high"></div></div>
+          </div>
+          <div class="ai-result-box">
+            <div class="ai-result-box__label">应到 130 · 差</div>
+            <div class="ai-result-box__value" style="color:var(--warn);">-2</div>
+          </div>
+        </div>
+      </div>
+      <div class="glasses-screen__footer">
+        <div class="glasses-screen__hint">⟳ 修正 · ● 确认 · 🎤「确认128个」</div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-buttons" style="width:640px;margin-top:12px;">
+    <a class="nav-btn" href="09-ai-hub.html">← 能力菜单</a>
+    <a class="nav-btn" href="11-ai-cert-translate.html">下一屏：证书翻译 →</a>
+  </div>
+  <script src="../../js/flow-nav.js"></script>
+</body>
+</html>
