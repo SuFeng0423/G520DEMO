@@ -4,23 +4,13 @@
 
 ## 在线访问
 
-### 正式地址（需先开启 Pages）
-
-```
-https://sf_0423.gitee.io/g520-demo/
-```
-
-**若出现 404**：代码已上传，但 **Gitee Pages 尚未启动**。请按 **[docs/PAGES.md](docs/PAGES.md)** 操作（约 2 分钟）：
-
-1. 仓库 → **服务** → **Gitee Pages**
-2. 分支 `master`、目录 `/` → **启动**
-3. 等待部署完成后访问上列地址
-
-### 临时预览（Pages 未开时可用）
+码云 **个人版已无 Gitee Pages**（服务菜单里不会出现），请使用 Raw 直链分享：
 
 ```
 https://gitee.com/sf_0423/g520-demo/raw/master/index.html
 ```
+
+所有人可访问，无需登录。说明见 **[docs/PAGES.md](docs/PAGES.md)**。
 
 ## 本地预览
 
