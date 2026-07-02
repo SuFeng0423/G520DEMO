@@ -12,15 +12,15 @@
 https://htmlpreview.github.io/?https://gitee.com/sf_0423/g520-demo/raw/master/index.html
 ```
 
-### 正式访问（推荐 GitHub Pages）
-
-将仓库同步到 GitHub 并开启 Pages 后：
+### 正式访问（GitHub Pages）
 
 ```
-https://你的用户名.github.io/g520-demo/
+https://sufeng0423.github.io/G520DEMO/
 ```
 
-详细步骤见 **[docs/PAGES.md](docs/PAGES.md)**（含 GitHub Pages、国内托管备选）。
+首次需在 GitHub 仓库开启 Pages：**Settings → Pages → Source 选 GitHub Actions**（或 Deploy from branch `main` / `/`）。
+
+详细步骤见 **[docs/PAGES.md](docs/PAGES.md)**。
 
 ## 本地预览
 
