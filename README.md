@@ -1,32 +1,26 @@
 # 智能眼镜 · 目视检查原型
 
-640×400 智能眼镜 UI 原型（拍照留底流程）。
+640×400 智能眼镜 + 手机 APK 协作原型。流程按三端划分：
+
+| 端 | 层级 | 职责 |
+|---|---|---|
+| **服务端** | 数据层 | 云宏方提供工单 / 上传 / 提交接口 |
+| **APK 端** | 预览层 | 收图、放大缩小与局部预览、删图、一键提交（进度条） |
+| **眼镜端** | 操作层 | 登录取工单、执行检查、拍照并传至 APK |
 
 ## 在线访问
-
-> **注意：** 码云 Raw 链接只会显示 HTML **源码**，无法渲染成页面（个人版已无 Gitee Pages）。
-
-### 临时预览（免部署）
-
-> `htmlpreview.github.io` **只支持 GitHub / Bitbucket**，不支持 Gitee（会 CORS + 常 404）。请用下方 GitHub 地址：
-
-```
-https://htmlpreview.github.io/?https://github.com/SuFeng0423/G520DEMO/blob/main/index.html
-```
-
-### 正式访问（GitHub Pages）
 
 ```
 https://sufeng0423.github.io/G520DEMO/
 ```
 
-首次需在 GitHub 仓库开启 Pages：**Settings → Pages → Source 选 GitHub Actions**（或 Deploy from branch `main` / `/`）。
+临时预览：
 
-详细步骤见 **[docs/PAGES.md](docs/PAGES.md)**。
+```
+https://htmlpreview.github.io/?https://github.com/SuFeng0423/G520DEMO/blob/main/index.html
+```
 
 ## 本地预览
-
-直接用浏览器打开 `index.html`，或：
 
 ```bash
 python3 -m http.server 8080
@@ -35,6 +29,7 @@ python3 -m http.server 8080
 
 ## 结构
 
-- `index.html` — 流程总览与入口
-- `screens/` — 各流程屏
+- `index.html` — 三端架构与屏幕总览
+- `screens/` — 眼镜端操作屏
+- `screens/apk/` — APK 预览 / 提交屏
 - `css/`、`js/` — 样式与流程导航

@@ -1,26 +1,48 @@
 /**
- * 流程串联：?flow=basic，localStorage 记忆，自动修正分支导航
+ * 流程串联：眼镜端 → APK 端（完整闭环）
  */
 (function () {
   const params = new URLSearchParams(location.search);
   let flow = params.get('flow');
-  if (flow === 'basic') {
-    localStorage.setItem('deom-flow', flow);
+  if (flow === 'full' || flow === 'glasses' || flow === 'apk' || flow === 'basic') {
+    localStorage.setItem('deom-flow', flow === 'basic' ? 'full' : flow);
   } else {
-    flow = localStorage.getItem('deom-flow') || 'basic';
+    flow = localStorage.getItem('deom-flow') || 'full';
   }
 
-  const STEPS = [
-    { file: '01-login.html', label: '登录' },
-    { file: '02-work-order-list.html', label: '选工单' },
-    { file: '03-work-order-confirm.html', label: '确认作业' },
-    { file: '04-inspection-preview-on.html', label: '预览开' },
-    { file: '05-inspection-preview-off.html', label: '预览关' },
-    { file: '06-photo-review.html', label: '照片回看' },
-    { file: '07-upload-match-success.html', label: '上传留档' },
-    { file: '09-upload-complete.html', label: '上传完成' },
-    { file: '10-task-end.html', label: '结束任务' },
-  ];
+  const FLOWS = {
+    full: [
+      { file: '01-login.html', label: '登录' },
+      { file: '02-work-order-list.html', label: '选工单' },
+      { file: '03-work-order-confirm.html', label: '确认' },
+      { file: '04-inspection-preview-on.html', label: '拍照' },
+      { file: '05-inspection-preview-off.html', label: '预览关' },
+      { file: '06-transfer-to-apk.html', label: '传APK' },
+      { file: '07-transfer-done.html', label: '传完' },
+      { file: '01-gallery.html', label: 'APK相册' },
+      { file: '02-preview.html', label: '预览' },
+      { file: '03-delete.html', label: '删图' },
+      { file: '04-submit-progress.html', label: '提交' },
+      { file: '05-submit-done.html', label: '归档' },
+    ],
+    glasses: [
+      { file: '01-login.html', label: '登录' },
+      { file: '02-work-order-list.html', label: '选工单' },
+      { file: '03-work-order-confirm.html', label: '确认' },
+      { file: '04-inspection-preview-on.html', label: '拍照' },
+      { file: '05-inspection-preview-off.html', label: '预览关' },
+      { file: '06-transfer-to-apk.html', label: '传APK' },
+      { file: '07-transfer-done.html', label: '传完' },
+      { file: '08-task-end.html', label: '结束' },
+    ],
+    apk: [
+      { file: '01-gallery.html', label: '相册' },
+      { file: '02-preview.html', label: '预览' },
+      { file: '03-delete.html', label: '删图' },
+      { file: '04-submit-progress.html', label: '提交' },
+      { file: '05-submit-done.html', label: '归档' },
+    ],
+  };
 
   window.DEOM_FLOW = flow;
 
@@ -30,36 +52,40 @@
 
   function indexHref() {
     const path = location.pathname.replace(/\\/g, '/');
+    if (path.includes('/screens/apk/')) return '../../index.html';
     if (path.includes('/screens/')) return '../index.html';
     return 'index.html';
   }
 
   function renderFlowBar() {
+    const steps = FLOWS[flow] || FLOWS.full;
     const file = currentFile();
-    let idx = STEPS.findIndex((s) => s.file === file);
+    let idx = steps.findIndex((s) => s.file === file);
     if (idx < 0) return;
 
     const bar = document.createElement('div');
     bar.className = 'flow-walkthrough';
     bar.innerHTML =
       '<div class="flow-walkthrough__head">' +
-      '<span class="flow-walkthrough__badge">流程体验</span>' +
+      '<span class="flow-walkthrough__badge">三端流程</span>' +
       '<span class="flow-walkthrough__progress">步骤 ' +
       (idx + 1) +
       ' / ' +
-      STEPS.length +
+      steps.length +
       '</span>' +
       '<a class="flow-walkthrough__home" href="' +
       indexHref() +
       '">流程总览</a>' +
       '</div>' +
       '<div class="flow-walkthrough__steps">' +
-      STEPS.map(function (s, i) {
-        var cls = 'flow-walkthrough__step';
-        if (i === idx) cls += ' flow-walkthrough__step--active';
-        else if (i < idx) cls += ' flow-walkthrough__step--done';
-        return '<span class="' + cls + '">' + s.label + '</span>';
-      }).join('<span class="flow-walkthrough__arrow">→</span>') +
+      steps
+        .map(function (s, i) {
+          var cls = 'flow-walkthrough__step';
+          if (i === idx) cls += ' flow-walkthrough__step--active';
+          else if (i < idx) cls += ' flow-walkthrough__step--done';
+          return '<span class="' + cls + '">' + s.label + '</span>';
+        })
+        .join('<span class="flow-walkthrough__arrow">→</span>') +
       '</div>';
     document.body.insertBefore(bar, document.body.firstChild);
   }

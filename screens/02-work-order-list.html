@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=640">
-  <title>02 选择工单 — 智能眼镜原型</title>
+  <title>02 选择工单 — 眼镜端</title>
   <link rel="stylesheet" href="../css/prototype.css">
 </head>
 <body>
-  <div class="glasses-screen">
+  <div class="glasses-screen glasses-screen--basic">
     <div class="glasses-screen__status">
       <span><span class="glasses-screen__status-dot"></span>QC00128</span>
       <span>待作业 3</span>
@@ -18,15 +18,16 @@
         <div class="list-item list-item--compact list-item--selected">SH20250702001 · 到货检查</div>
         <div class="list-item list-item--compact">SH20250701998 · 外观抽检</div>
         <div class="list-item list-item--compact">SH20250701995 · 标签核对</div>
+        <p class="layer-hint">数据来自服务端工单接口（云宏方）</p>
       </div>
       <div class="glasses-screen__footer">
-        <div class="glasses-screen__hint">⟳ 选择 · ● 进入</div>
+        <div class="glasses-screen__hint">⟳ 选择 · ● 进入执行</div>
       </div>
     </div>
   </div>
-  <div class="nav-buttons" style="width:640px;margin-top:12px;">
+  <div class="nav-buttons nav-buttons--screen">
     <a class="nav-btn" href="01-login.html">← 登录</a>
-    <a class="nav-btn" href="03-work-order-confirm.html">下一屏：工单确认 →</a>
+    <a class="nav-btn" href="03-work-order-confirm.html">下一屏：确认作业 →</a>
   </div>
   <script src="../js/flow-nav.js"></script>
 </body>

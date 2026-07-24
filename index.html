@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
-  <title>智能眼镜 · 目视检查 — 项目原型总览</title>
+  <title>智能眼镜 · 目视检查 — 三端原型总览</title>
   <link rel="stylesheet" href="css/prototype.css">
   <link rel="stylesheet" href="css/index.css">
 </head>
@@ -11,104 +11,163 @@
   <div class="flow-overview">
     <div class="index-page__hero">
       <h1>智能眼镜 · 通用目视检查 — 项目原型</h1>
-      <p>设备：双目全彩 · 屏幕 640×400 · 交互：语音 + 滚轮 + 按钮 · 前置：登录 → 选工单 → 确认作业</p>
+      <p>流程与设备端分为三部分：<strong>服务端（数据层）</strong>、<strong>APK 端（预览层）</strong>、<strong>眼镜端（操作层）</strong></p>
       <div class="flow-entry">
-        <a class="flow-entry__btn" id="entry-flow" href="screens/01-login.html?flow=basic">进入流程体验 →</a>
-        <p class="flow-entry__hint">从登录开始逐步浏览：拍照留底 → 回看 → 上传 → 结束任务</p>
+        <a class="flow-entry__btn" href="screens/01-login.html?flow=full">体验完整流程 →</a>
+        <a class="flow-entry__btn flow-entry__btn--secondary" href="#layer-glasses">仅看眼镜端</a>
+        <a class="flow-entry__btn flow-entry__btn--secondary" href="#layer-apk">仅看 APK 端</a>
+        <p class="flow-entry__hint">串联：眼镜登录取工单 → 拍照传 APK → APK 预览/删图 → 一键提交服务端（含进度）</p>
       </div>
     </div>
 
-    <div class="feature-summary">
-      <h3>能力概览</h3>
-      <ul>
-        <li><strong>拍照留底</strong> — <span>全语音解放双手，仅采集全彩图像</span></li>
-        <li><strong>镜头预览</strong> — <span>开关预览、调整位置</span></li>
-        <li><strong>设备端检视</strong> — <span>放大、移动、切换照片</span></li>
-        <li><strong>留档上传</strong> — <span>按当前工单挂接至收货系统</span></li>
-      </ul>
+    <div class="layer-grid" id="layer-overview">
+      <article class="layer-card layer-card--server">
+        <div class="layer-card__tag">数据层</div>
+        <h3>服务端</h3>
+        <p class="layer-card__provider">云宏方提供</p>
+        <ul>
+          <li><strong>工单接口</strong> — 按用户信息下发待检工单列表与详情</li>
+          <li><strong>上传接口</strong> — 接收 APK 提交的留底图片并挂接工单</li>
+          <li><strong>提交接口</strong> — 确认本单作业完成、回写状态</li>
+        </ul>
+        <p class="layer-card__note">本原型不模拟服务端 UI，仅标明职责与调用关系。</p>
+      </article>
+
+      <article class="layer-card layer-card--apk" id="layer-apk">
+        <div class="layer-card__tag">预览层</div>
+        <h3>APK 端</h3>
+        <p class="layer-card__provider">安装于手机</p>
+        <ul>
+          <li><strong>收图</strong> — 按当前工单接收眼镜端传输的图片</li>
+          <li><strong>预览</strong> — 放大、缩小、局部预览</li>
+          <li><strong>删图</strong> — 删除不合格或误拍图片</li>
+          <li><strong>一键提交</strong> — 调用服务端上传/提交，展示进度条</li>
+        </ul>
+      </article>
+
+      <article class="layer-card layer-card--glasses" id="layer-glasses">
+        <div class="layer-card__tag">操作层</div>
+        <h3>眼镜端</h3>
+        <p class="layer-card__provider">双目全彩 · 640×400</p>
+        <ul>
+          <li><strong>登录</strong> — 用户信息鉴权</li>
+          <li><strong>取工单</strong> — 依用户从服务端获取工单列表并选择执行</li>
+          <li><strong>拍照</strong> — 预览开关、全语音拍照留底</li>
+          <li><strong>传图</strong> — 将图片传输至手机 APK（不直连上传服务端）</li>
+        </ul>
+      </article>
     </div>
 
-    <div class="version-panel">
-      <div class="logic-note">
-        <h3>流程逻辑 · 拍照留底</h3>
-        确认作业后进入<strong>拍照留底模式</strong>：双目全彩预览 → 全语音拍照 → 设备端回看 → 按工单上传留档。
-      </div>
-
-      <div class="flow-steps">
-        <span class="flow-step flow-step--active">① 登录</span><span class="flow-arrow">→</span>
-        <span class="flow-step flow-step--active">② 选工单</span><span class="flow-arrow">→</span>
-        <span class="flow-step flow-step--active">③ 确认作业</span><span class="flow-arrow">→</span>
-        <span class="flow-step flow-step--active">④ 预览/拍照</span><span class="flow-arrow">→</span>
-        <span class="flow-step flow-step--active">⑤ 回看</span><span class="flow-arrow">→</span>
-        <span class="flow-step flow-step--active">⑥ 上传留档</span><span class="flow-arrow">→</span>
-        <span class="flow-step flow-step--active">⑦ 结束任务</span>
-      </div>
-
-      <div class="zone-dark">
-        <div class="zone-dark__label">▸ 流程 · 图像采集与工单挂接</div>
-        <div class="interaction-map">
-          <svg viewBox="0 0 1100 200" xmlns="http://www.w3.org/2000/svg">
-            <rect width="1100" height="200" fill="#0a0e14"/>
-            <text x="550" y="24" text-anchor="middle" fill="#00d4aa" font-size="13" font-family="PingFang SC,sans-serif">登录 → 工单 → 全语音拍照留底 → 工单挂接上传</text>
-            <rect x="30" y="50" width="80" height="36" rx="4" fill="#141b24" stroke="#00d4aa"/><text x="70" y="72" text-anchor="middle" fill="#e8eef4" font-size="10" font-family="PingFang SC,sans-serif">登录</text>
-            <rect x="130" y="50" width="90" height="36" rx="4" fill="#141b24" stroke="#00d4aa"/><text x="175" y="72" text-anchor="middle" fill="#e8eef4" font-size="10" font-family="PingFang SC,sans-serif">选工单</text>
-            <rect x="240" y="50" width="100" height="36" rx="4" fill="#141b24" stroke="#00d4aa"/><text x="290" y="72" text-anchor="middle" fill="#e8eef4" font-size="10" font-family="PingFang SC,sans-serif">确认作业</text>
-            <rect x="360" y="50" width="110" height="36" rx="4" fill="#141b24" stroke="#6eb5ff"/><text x="415" y="72" text-anchor="middle" fill="#e8eef4" font-size="10" font-family="PingFang SC,sans-serif">预览/拍照</text>
-            <rect x="490" y="50" width="90" height="36" rx="4" fill="#141b24" stroke="#6eb5ff"/><text x="535" y="72" text-anchor="middle" fill="#e8eef4" font-size="10" font-family="PingFang SC,sans-serif">回看</text>
-            <rect x="600" y="50" width="100" height="36" rx="4" fill="#141b24" stroke="#ff9f43"/><text x="650" y="72" text-anchor="middle" fill="#e8eef4" font-size="10" font-family="PingFang SC,sans-serif">上传留档</text>
-            <rect x="720" y="50" width="90" height="36" rx="4" fill="#141b24" stroke="#00d4aa"/><text x="765" y="72" text-anchor="middle" fill="#e8eef4" font-size="10" font-family="PingFang SC,sans-serif">结束任务</text>
-            <text x="40" y="120" fill="#8a9bb0" font-size="10" font-family="PingFang SC,sans-serif">上传成功 → 继续检查 或 「结束任务」→ 返回工单列表（流程闭环）</text>
-            <text x="40" y="145" fill="#6eb5ff" font-size="10" font-family="PingFang SC,sans-serif">双目全彩：预览与留底均为全彩图像，HUD 仅叠加操作提示</text>
-            <text x="40" y="175" fill="#00d4aa" font-size="10" font-family="PingFang SC,sans-serif">上传完成 → 继续拍照 或 结束任务</text>
-          </svg>
-        </div>
-      </div>
-      <div class="screen-grid" id="screens-standard"></div>
+    <div class="logic-note">
+      <h3>端间协作</h3>
+      眼镜端负责<strong>现场操作</strong>；APK 负责<strong>看图质检与最终提交</strong>；服务端负责<strong>工单与归档数据</strong>。<br>
+      眼镜拍照后只传到 APK；由 APK 统一调用服务端上传/提交接口，并展示提交进度。
     </div>
 
-    <div class="spec-note" id="spec-note">
-      <h3>交互与设备规格</h3>
-      <strong>硬件：</strong>双目全彩智能眼镜 · 640×400 显示<br>
-      <strong>输入：</strong>语音（全场景）+ 滚轮 + 按钮（短按确认 / 长按返回或拖动）<br>
-      <strong>能力：</strong>拍照、预览、留档、按工单上传<br>
-      <strong>体验：</strong>顶部「进入流程体验」从登录串联至结束 · 各屏也可单独打开<br>
-      <strong>文件：</strong><code>screens/</code> 各流程屏
+    <div class="flow-steps">
+      <span class="flow-step flow-step--glasses">① 眼镜登录</span><span class="flow-arrow">→</span>
+      <span class="flow-step flow-step--glasses">② 选工单</span><span class="flow-arrow">→</span>
+      <span class="flow-step flow-step--glasses">③ 拍照</span><span class="flow-arrow">→</span>
+      <span class="flow-step flow-step--glasses">④ 传至 APK</span><span class="flow-arrow">→</span>
+      <span class="flow-step flow-step--apk">⑤ APK 预览/删图</span><span class="flow-arrow">→</span>
+      <span class="flow-step flow-step--apk">⑥ 一键提交</span><span class="flow-arrow">→</span>
+      <span class="flow-step flow-step--server">⑦ 服务端归档</span>
+    </div>
+
+    <div class="zone-dark">
+      <div class="zone-dark__label">▸ 三端数据流</div>
+      <div class="interaction-map">
+        <svg viewBox="0 0 1100 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="1100" height="220" fill="#0a0e14"/>
+          <text x="550" y="28" text-anchor="middle" fill="#8a9bb0" font-size="13" font-family="PingFang SC,sans-serif">服务端 ← 工单/上传/提交 → APK ← 图片传输 → 眼镜端</text>
+
+          <rect x="40" y="60" width="280" height="100" rx="6" fill="#141b24" stroke="#6eb5ff"/>
+          <text x="180" y="88" text-anchor="middle" fill="#6eb5ff" font-size="13" font-family="PingFang SC,sans-serif">服务端 · 数据层</text>
+          <text x="180" y="112" text-anchor="middle" fill="#e8eef4" font-size="11" font-family="PingFang SC,sans-serif">云宏方：工单 / 上传 / 提交</text>
+          <text x="180" y="136" text-anchor="middle" fill="#8a9bb0" font-size="10" font-family="PingFang SC,sans-serif">无本端操作 UI</text>
+
+          <rect x="400" y="60" width="280" height="100" rx="6" fill="#141b24" stroke="#ff9f43"/>
+          <text x="540" y="88" text-anchor="middle" fill="#ff9f43" font-size="13" font-family="PingFang SC,sans-serif">APK · 预览层</text>
+          <text x="540" y="112" text-anchor="middle" fill="#e8eef4" font-size="11" font-family="PingFang SC,sans-serif">收图 · 缩放/局部 · 删除</text>
+          <text x="540" y="136" text-anchor="middle" fill="#e8eef4" font-size="11" font-family="PingFang SC,sans-serif">一键提交 + 进度条</text>
+
+          <rect x="760" y="60" width="280" height="100" rx="6" fill="#141b24" stroke="#00d4aa"/>
+          <text x="900" y="88" text-anchor="middle" fill="#00d4aa" font-size="13" font-family="PingFang SC,sans-serif">眼镜端 · 操作层</text>
+          <text x="900" y="112" text-anchor="middle" fill="#e8eef4" font-size="11" font-family="PingFang SC,sans-serif">登录 · 选工单 · 执行</text>
+          <text x="900" y="136" text-anchor="middle" fill="#e8eef4" font-size="11" font-family="PingFang SC,sans-serif">拍照 → 传图至 APK</text>
+
+          <path d="M320 110 H390" stroke="#6eb5ff" stroke-width="2" marker-end="url(#arrow)"/>
+          <path d="M680 110 H750" stroke="#00d4aa" stroke-width="2"/>
+          <text x="550" y="190" text-anchor="middle" fill="#8a9bb0" font-size="11" font-family="PingFang SC,sans-serif">APK 调用服务端接口完成归档；眼镜不直连上传</text>
+        </svg>
+      </div>
+    </div>
+
+    <section class="version-panel" id="section-glasses">
+      <div class="section-head">
+        <h2>眼镜端 · 操作层屏幕</h2>
+        <span class="section-head__badge section-head__badge--glasses">640×400</span>
+      </div>
+      <div class="screen-grid" id="screens-glasses"></div>
+    </section>
+
+    <section class="version-panel" id="section-apk">
+      <div class="section-head">
+        <h2>APK 端 · 预览层屏幕</h2>
+        <span class="section-head__badge section-head__badge--apk">手机竖屏</span>
+      </div>
+      <div class="screen-grid screen-grid--apk" id="screens-apk"></div>
+    </section>
+
+    <div class="spec-note">
+      <h3>职责边界</h3>
+      <strong>服务端：</strong>云宏方提供工单、上传、提交等接口，本原型只标注调用点<br>
+      <strong>APK：</strong>看图（放大/缩小/局部）、删图、一键提交并展示进度<br>
+      <strong>眼镜：</strong>登录取工单、执行检查、拍照并传输至 APK<br>
+      <strong>文件：</strong><code>screens/</code> 眼镜屏 · <code>screens/apk/</code> APK 屏
     </div>
   </div>
 
   <script>
-    const STANDARD_SCREENS = [
-      { num: '01', name: '登录', desc: '滚轮切换工号/密码，按钮或语音「登录」', src: 'screens/01-login.html' },
-      { num: '02', name: '选择工单', desc: '滚轮浏览待检工单，按钮或语音选中', src: 'screens/02-work-order-list.html' },
-      { num: '03', name: '确认作业信息', desc: '核对后「开始检查」进入拍照留底', src: 'screens/03-work-order-confirm.html' },
-      { num: '04', name: '预览开启 · 全语音拍照', desc: '双目全彩预览，调位置/开关，采集图像', src: 'screens/04-inspection-preview-on.html' },
-      { num: '05', name: '预览关闭 · 拍照', desc: '释放视野，角标待命，仍可全彩拍摄', src: 'screens/05-inspection-preview-off.html' },
-      { num: '06', name: '全彩照片回看', desc: '设备端放大/移动/切换', src: 'screens/06-photo-review.html' },
-      { num: '07', name: '上传留档 · 工单挂接', desc: '按当前工单挂接至收货系统', src: 'screens/07-upload-match-success.html' },
-      { num: '08', name: '上传异常 · 本地缓存', desc: '（分支）网络失败时本地缓存补传', src: 'screens/08-upload-match-fail.html', branch: true },
-      { num: '09', name: '上传完成', desc: '留档成功，可选继续检查或结束任务', src: 'screens/09-upload-complete.html' },
-      { num: '10', name: '结束任务', desc: '本单完成，返回工单列表（流程终点）', src: 'screens/10-task-end.html' },
+    const GLASSES_SCREENS = [
+      { num: 'G01', name: '登录', desc: '工号/密码登录，鉴权后按用户信息请求服务端工单', src: 'screens/01-login.html', layer: 'glasses' },
+      { num: 'G02', name: '选择工单', desc: '展示服务端下发的待检工单，选择后进入执行', src: 'screens/02-work-order-list.html', layer: 'glasses' },
+      { num: 'G03', name: '确认作业', desc: '核对工单信息后开始检查（拍照留底）', src: 'screens/03-work-order-confirm.html', layer: 'glasses' },
+      { num: 'G04', name: '预览开启 · 拍照', desc: '双目全彩预览，语音/按钮拍照', src: 'screens/04-inspection-preview-on.html', layer: 'glasses' },
+      { num: 'G05', name: '预览关闭 · 拍照', desc: '关闭预览释放视野，仍可全彩拍摄', src: 'screens/05-inspection-preview-off.html', layer: 'glasses' },
+      { num: 'G06', name: '传输至 APK', desc: '将本批照片经近场传输到手机 APK', src: 'screens/06-transfer-to-apk.html', layer: 'glasses' },
+      { num: 'G07', name: '传输完成', desc: '传图成功，可继续拍照或结束本单操作', src: 'screens/07-transfer-done.html', layer: 'glasses' },
+      { num: 'G08', name: '结束任务', desc: '眼镜侧作业结束，返回工单列表；正式归档由 APK 提交', src: 'screens/08-task-end.html', layer: 'glasses' },
+    ];
+
+    const APK_SCREENS = [
+      { num: 'A01', name: '收图相册', desc: '按工单展示眼镜传来的图片列表', src: 'screens/apk/01-gallery.html', layer: 'apk', phone: true },
+      { num: 'A02', name: '图片预览', desc: '放大、缩小、局部预览', src: 'screens/apk/02-preview.html', layer: 'apk', phone: true },
+      { num: 'A03', name: '删除确认', desc: '删除误拍/不合格图片', src: 'screens/apk/03-delete.html', layer: 'apk', phone: true },
+      { num: 'A04', name: '一键提交', desc: '调用服务端上传/提交，展示进度条', src: 'screens/apk/04-submit-progress.html', layer: 'apk', phone: true },
+      { num: 'A05', name: '提交完成', desc: '服务端归档成功，本单闭环', src: 'screens/apk/05-submit-done.html', layer: 'apk', phone: true },
     ];
 
     function renderScreens(list, containerId) {
       document.getElementById(containerId).innerHTML = list.map(s => `
-        <div class="screen-card${s.branch ? ' screen-card--branch' : ''}">
+        <div class="screen-card screen-card--${s.layer}${s.phone ? ' screen-card--phone' : ''}">
           <div class="screen-card__info">
             <div class="screen-card__header">
               <span class="screen-card__num">${s.num}</span>
-              <span class="screen-card__name">${s.name}${s.branch ? '<span class="branch-badge">分支</span>' : ''}</span>
+              <span class="screen-card__name">${s.name}<span class="layer-badge layer-badge--${s.layer}">${s.layer === 'apk' ? 'APK' : '眼镜'}</span></span>
               <a class="screen-card__link" href="${s.src}" target="_blank">单独打开 →</a>
             </div>
           </div>
           <p class="screen-card__desc">${s.desc}</p>
-          <div class="screen-card__preview">
-            <iframe src="${s.src}" width="640" height="400" frameborder="0" title="${s.name}"></iframe>
+          <div class="screen-card__preview${s.phone ? ' screen-card__preview--phone' : ''}">
+            <iframe src="${s.src}" ${s.phone ? 'width="360" height="640"' : 'width="640" height="400"'} frameborder="0" title="${s.name}"></iframe>
           </div>
         </div>
       `).join('');
     }
 
-    renderScreens(STANDARD_SCREENS, 'screens-standard');
+    renderScreens(GLASSES_SCREENS, 'screens-glasses');
+    renderScreens(APK_SCREENS, 'screens-apk');
   </script>
 </body>
 </html>

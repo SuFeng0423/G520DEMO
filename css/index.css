@@ -9,6 +9,9 @@
   --page-accent: #007a62;
   --zone-dark-bg: #0a0e14;
   --zone-dark-border: #2a3a4d;
+  --layer-server: #2f6fed;
+  --layer-apk: #c7771f;
+  --layer-glasses: #007a62;
 }
 
 body.index-page {
@@ -24,7 +27,6 @@ body.index-page {
   padding: 32px 32px 48px;
 }
 
-/* 顶栏：浅色 */
 .index-page__hero {
   background: var(--page-surface);
   border: 1px solid var(--page-border);
@@ -32,7 +34,6 @@ body.index-page {
   padding: 24px 28px;
   margin-bottom: 24px;
   box-shadow: 0 1px 3px rgba(26, 35, 50, 0.06);
-  position: relative;
 }
 
 .index-page__hero h1 {
@@ -71,6 +72,12 @@ body.index-page {
   transition: transform 0.15s, box-shadow 0.15s;
 }
 
+.flow-entry__btn--secondary {
+  background: var(--page-surface);
+  color: var(--page-text);
+  border-color: var(--page-border);
+}
+
 .flow-entry__btn:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(26, 35, 50, 0.12);
@@ -83,58 +90,106 @@ body.index-page {
   margin: 0;
 }
 
-/* 能力概览 */
-.index-page .feature-summary {
+/* 三端卡片 */
+.layer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 960px) {
+  .layer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.layer-card {
   background: var(--page-surface);
   border: 1px solid var(--page-border);
   border-radius: 8px;
   padding: 16px 18px;
-  margin-bottom: 24px;
   font-size: 12px;
-  line-height: 1.85;
+  line-height: 1.8;
 }
 
-.index-page .feature-summary h3 {
-  font-size: 14px;
+.layer-card h3 {
+  font-size: 16px;
+  margin: 4px 0 2px;
+  color: var(--page-text);
+}
+
+.layer-card__tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+}
+
+.layer-card--server .layer-card__tag { color: var(--layer-server); }
+.layer-card--apk .layer-card__tag { color: var(--layer-apk); }
+.layer-card--glasses .layer-card__tag { color: var(--layer-glasses); }
+
+.layer-card__provider {
+  color: var(--page-text-muted);
+  font-size: 11px;
   margin-bottom: 8px;
-  color: var(--page-accent);
 }
 
-.index-page .feature-summary ul {
+.layer-card ul {
   margin-left: 16px;
   color: var(--page-text);
 }
 
-.index-page .feature-summary li span {
+.layer-card li span,
+.layer-card__note {
   color: var(--page-text-muted);
   font-size: 11px;
 }
 
-/* 交互图例：浅色条 */
-.index-page .legend {
-  background: var(--page-surface-alt);
-  border: 1px solid var(--page-border);
-  border-radius: 6px;
-  padding: 12px 16px;
+.layer-card__note {
+  margin-top: 10px;
 }
 
-/* 流程步骤：浅色 */
 .index-page .flow-steps {
   background: var(--page-surface);
   border: 1px solid var(--page-border);
   border-radius: 6px;
   padding: 14px 18px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
 }
 
 .index-page .flow-step {
   background: var(--page-surface-alt);
-  border-color: var(--page-border);
+  border: 1px solid var(--page-border);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
   color: var(--page-text-muted);
 }
 
-.index-page .flow-step--active {
-  border-color: var(--page-accent);
-  color: var(--page-accent);
+.index-page .flow-step--server {
+  border-color: rgba(47, 111, 237, 0.35);
+  color: var(--layer-server);
+  background: rgba(47, 111, 237, 0.08);
+}
+
+.index-page .flow-step--apk {
+  border-color: rgba(199, 119, 31, 0.35);
+  color: var(--layer-apk);
+  background: rgba(199, 119, 31, 0.08);
+}
+
+.index-page .flow-step--glasses {
+  border-color: rgba(0, 122, 98, 0.35);
+  color: var(--layer-glasses);
   background: rgba(0, 122, 98, 0.08);
 }
 
@@ -142,7 +197,6 @@ body.index-page {
   color: var(--page-text-muted);
 }
 
-/* 流程图：暗色区块 */
 .index-page .zone-dark {
   background: var(--zone-dark-bg);
   border: 1px solid var(--zone-dark-border);
@@ -159,9 +213,37 @@ body.index-page {
   background: #141b24;
 }
 
-/* 屏幕卡片：浅色信息 + 暗色预览区 */
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 16px;
+}
+
+.section-head h2 {
+  font-size: 18px;
+  color: var(--page-text);
+}
+
+.section-head__badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+}
+
+.section-head__badge--glasses {
+  color: var(--layer-glasses);
+}
+
+.section-head__badge--apk {
+  color: var(--layer-apk);
+}
+
 .index-page .screen-grid {
+  display: grid;
   gap: 28px;
+  margin-bottom: 36px;
 }
 
 .index-page .screen-card {
@@ -177,18 +259,38 @@ body.index-page {
   border-bottom: 1px solid var(--page-border);
 }
 
+.index-page .screen-card__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .index-page .screen-card__num {
   color: var(--page-accent);
+  font-weight: 700;
+}
+
+.index-page .screen-card--apk .screen-card__num {
+  color: var(--layer-apk);
 }
 
 .index-page .screen-card__name {
   color: var(--page-text);
+  flex: 1;
+}
+
+.index-page .screen-card__link {
+  font-size: 12px;
+  color: var(--page-accent);
+  text-decoration: none;
 }
 
 .index-page .screen-card__desc {
   color: var(--page-text-muted);
   padding: 0 18px 12px;
   margin-top: -4px;
+  font-size: 12px;
 }
 
 .index-page .screen-card__preview {
@@ -199,35 +301,45 @@ body.index-page {
   box-shadow: inset 0 0 0 1px rgba(0, 122, 98, 0.2);
 }
 
+.index-page .screen-card--apk .screen-card__preview {
+  box-shadow: inset 0 0 0 1px rgba(199, 119, 31, 0.25);
+}
+
 .index-page .screen-card__preview iframe {
   border: 2px solid rgba(0, 212, 170, 0.35) !important;
   border-radius: 4px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  background: #1a1a2e;
 }
 
-.index-page .branch-badge {
+.index-page .screen-card__preview--phone iframe {
+  border-color: rgba(255, 159, 67, 0.45) !important;
+  border-radius: 12px;
+}
+
+.layer-badge {
   display: inline-block;
   font-size: 9px;
   padding: 1px 6px;
   border-radius: 3px;
-  border: 1px solid var(--warn, #ffb020);
-  color: var(--warn, #ffb020);
   margin-left: 8px;
   vertical-align: middle;
+  border: 1px solid currentColor;
 }
 
-.nav-buttons {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  align-items: center;
+.layer-badge--glasses {
+  color: var(--layer-glasses);
 }
 
-/* 规格说明：浅色 */
+.layer-badge--apk {
+  color: var(--layer-apk);
+}
+
 .index-page .spec-note {
   background: var(--page-surface);
   border: 1px solid var(--page-border);
   color: var(--page-text);
+  border-radius: 8px;
 }
 
 .index-page .spec-note h3 {
@@ -254,4 +366,10 @@ body.index-page {
   font-size: 12px;
   line-height: 1.9;
   color: var(--page-text);
+}
+
+.index-page .logic-note h3 {
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: var(--page-accent);
 }
