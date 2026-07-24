@@ -1057,3 +1057,81 @@ body.apk-page {
 .apk-done .complete-title {
   color: #ff9f43;
 }
+
+/* 拍一张即自动传 APK */
+.auto-sync-toast {
+  position: absolute;
+  left: 50%;
+  bottom: 52px;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  color: var(--accent);
+  background: rgba(0, 212, 170, 0.12);
+  border: 1px solid rgba(0, 212, 170, 0.45);
+  white-space: nowrap;
+  z-index: 3;
+}
+
+.auto-sync-toast--ok {
+  color: #e8eef4;
+  background: rgba(0, 212, 170, 0.2);
+}
+
+.auto-sync-flash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.auto-sync-flash__shot,
+.auto-sync-flash__target {
+  min-width: 88px;
+  padding: 14px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.auto-sync-flash__target {
+  border-color: #ff9f43;
+  color: #ff9f43;
+}
+
+.auto-sync-flash__arrow {
+  color: var(--accent);
+  font-size: 20px;
+}
+
+.transfer-bar--thin {
+  width: 220px;
+  margin: 16px auto 0;
+  height: 6px;
+}
+
+.transfer-bar__fill--100 {
+  width: 100%;
+}
+
+.apk-thumb--new {
+  border-color: #ff9f43;
+  box-shadow: 0 0 0 1px rgba(255, 159, 67, 0.35);
+  position: relative;
+}
+
+.apk-thumb--new::after {
+  content: "新";
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 9px;
+  padding: 1px 4px;
+  border-radius: 2px;
+  background: #ff9f43;
+  color: #1a1208;
+}

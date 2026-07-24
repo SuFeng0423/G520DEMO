@@ -1,5 +1,5 @@
 /**
- * 流程串联：眼镜端 → APK 端（完整闭环）
+ * 流程串联：眼镜端（拍一张即传）→ APK 端
  */
 (function () {
   const params = new URLSearchParams(location.search);
@@ -17,8 +17,7 @@
       { file: '03-work-order-confirm.html', label: '确认' },
       { file: '04-inspection-preview-on.html', label: '拍照' },
       { file: '05-inspection-preview-off.html', label: '预览关' },
-      { file: '06-transfer-to-apk.html', label: '传APK' },
-      { file: '07-transfer-done.html', label: '传完' },
+      { file: '06-auto-sync-toast.html', label: '自动同步' },
       { file: '01-gallery.html', label: 'APK相册' },
       { file: '02-preview.html', label: '预览' },
       { file: '03-delete.html', label: '删图' },
@@ -31,8 +30,7 @@
       { file: '03-work-order-confirm.html', label: '确认' },
       { file: '04-inspection-preview-on.html', label: '拍照' },
       { file: '05-inspection-preview-off.html', label: '预览关' },
-      { file: '06-transfer-to-apk.html', label: '传APK' },
-      { file: '07-transfer-done.html', label: '传完' },
+      { file: '06-auto-sync-toast.html', label: '自动同步' },
       { file: '08-task-end.html', label: '结束' },
     ],
     apk: [

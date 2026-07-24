@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <title>智能眼镜 · 目视检查 — 三端原型总览</title>
-  <link rel="stylesheet" href="./css/index.css?v=20260724">
+  <link rel="stylesheet" href="./css/index.css?v=20260724c">
 </head>
 <body class="index-page">
   <div class="flow-overview">
@@ -15,7 +15,7 @@
         <a class="flow-entry__btn" href="screens/01-login.html?flow=full">体验完整流程 →</a>
         <a class="flow-entry__btn flow-entry__btn--secondary" href="#layer-glasses">仅看眼镜端</a>
         <a class="flow-entry__btn flow-entry__btn--secondary" href="#layer-apk">仅看 APK 端</a>
-        <p class="flow-entry__hint">串联：眼镜登录取工单 → 拍照传 APK → APK 预览/删图 → 一键提交服务端（含进度）</p>
+        <p class="flow-entry__hint">串联：眼镜登录取工单 → 拍照即自动传 APK → APK 预览/删图 → 一键提交服务端（含进度）</p>
       </div>
     </div>
 
@@ -37,7 +37,7 @@
         <h3>APK 端</h3>
         <p class="layer-card__provider">安装于手机</p>
         <ul>
-          <li><strong>收图</strong> — 按当前工单接收眼镜端传输的图片</li>
+          <li><strong>收图</strong> — 眼镜每拍一张即实时接收，无需二次确认</li>
           <li><strong>预览</strong> — 放大、缩小、局部预览</li>
           <li><strong>删图</strong> — 删除不合格或误拍图片</li>
           <li><strong>一键提交</strong> — 调用服务端上传/提交，展示进度条</li>
@@ -52,7 +52,7 @@
           <li><strong>登录</strong> — 用户信息鉴权</li>
           <li><strong>取工单</strong> — 依用户从服务端获取工单列表并选择执行</li>
           <li><strong>拍照</strong> — 预览开关、全语音拍照留底</li>
-          <li><strong>传图</strong> — 将图片传输至手机 APK（不直连上传服务端）</li>
+          <li><strong>传图</strong> — 每拍一张自动传至 APK，无需二次确认</li>
         </ul>
       </article>
     </div>
@@ -60,17 +60,16 @@
     <div class="logic-note">
       <h3>端间协作</h3>
       眼镜端负责<strong>现场操作</strong>；APK 负责<strong>看图质检与最终提交</strong>；服务端负责<strong>工单与归档数据</strong>。<br>
-      眼镜拍照后只传到 APK；由 APK 统一调用服务端上传/提交接口，并展示提交进度。
+      眼镜<strong>每拍一张即自动传至 APK</strong>（无二次确认）；由 APK 统一调用服务端上传/提交接口，并展示提交进度。
     </div>
 
     <div class="flow-steps">
       <span class="flow-step flow-step--glasses">① 眼镜登录</span><span class="flow-arrow">→</span>
       <span class="flow-step flow-step--glasses">② 选工单</span><span class="flow-arrow">→</span>
-      <span class="flow-step flow-step--glasses">③ 拍照</span><span class="flow-arrow">→</span>
-      <span class="flow-step flow-step--glasses">④ 传至 APK</span><span class="flow-arrow">→</span>
-      <span class="flow-step flow-step--apk">⑤ APK 预览/删图</span><span class="flow-arrow">→</span>
-      <span class="flow-step flow-step--apk">⑥ 一键提交</span><span class="flow-arrow">→</span>
-      <span class="flow-step flow-step--server">⑦ 服务端归档</span>
+      <span class="flow-step flow-step--glasses">③ 拍照即传 APK</span><span class="flow-arrow">→</span>
+      <span class="flow-step flow-step--apk">④ APK 预览/删图</span><span class="flow-arrow">→</span>
+      <span class="flow-step flow-step--apk">⑤ 一键提交</span><span class="flow-arrow">→</span>
+      <span class="flow-step flow-step--server">⑥ 服务端归档</span>
     </div>
 
     <div class="zone-dark">
@@ -87,17 +86,17 @@
 
           <rect x="400" y="60" width="280" height="100" rx="6" fill="#141b24" stroke="#ff9f43"/>
           <text x="540" y="88" text-anchor="middle" fill="#ff9f43" font-size="13" font-family="PingFang SC,sans-serif">APK · 预览层</text>
-          <text x="540" y="112" text-anchor="middle" fill="#e8eef4" font-size="11" font-family="PingFang SC,sans-serif">收图 · 缩放/局部 · 删除</text>
+          <text x="540" y="112" text-anchor="middle" fill="#e8eef4" font-size="11" font-family="PingFang SC,sans-serif">随拍随收 · 缩放/局部 · 删除</text>
           <text x="540" y="136" text-anchor="middle" fill="#e8eef4" font-size="11" font-family="PingFang SC,sans-serif">一键提交 + 进度条</text>
 
           <rect x="760" y="60" width="280" height="100" rx="6" fill="#141b24" stroke="#00d4aa"/>
           <text x="900" y="88" text-anchor="middle" fill="#00d4aa" font-size="13" font-family="PingFang SC,sans-serif">眼镜端 · 操作层</text>
           <text x="900" y="112" text-anchor="middle" fill="#e8eef4" font-size="11" font-family="PingFang SC,sans-serif">登录 · 选工单 · 执行</text>
-          <text x="900" y="136" text-anchor="middle" fill="#e8eef4" font-size="11" font-family="PingFang SC,sans-serif">拍照 → 传图至 APK</text>
+          <text x="900" y="136" text-anchor="middle" fill="#e8eef4" font-size="11" font-family="PingFang SC,sans-serif">拍照即自动传 APK</text>
 
           <path d="M320 110 H390" stroke="#6eb5ff" stroke-width="2" marker-end="url(#arrow)"/>
           <path d="M680 110 H750" stroke="#00d4aa" stroke-width="2"/>
-          <text x="550" y="190" text-anchor="middle" fill="#8a9bb0" font-size="11" font-family="PingFang SC,sans-serif">APK 调用服务端接口完成归档；眼镜不直连上传</text>
+          <text x="550" y="190" text-anchor="middle" fill="#8a9bb0" font-size="11" font-family="PingFang SC,sans-serif">眼镜拍一张传一张（无确认）· APK 调用服务端归档</text>
         </svg>
       </div>
     </div>
@@ -122,7 +121,7 @@
       <h3>职责边界</h3>
       <strong>服务端：</strong>云宏方提供工单、上传、提交等接口，本原型只标注调用点<br>
       <strong>APK：</strong>看图（放大/缩小/局部）、删图、一键提交并展示进度<br>
-      <strong>眼镜：</strong>登录取工单、执行检查、拍照并传输至 APK<br>
+      <strong>眼镜：</strong>登录取工单、执行检查；每拍一张自动传 APK（无二次确认）<br>
       <strong>文件：</strong><code>screens/</code> 眼镜屏 · <code>screens/apk/</code> APK 屏
     </div>
   </div>
@@ -132,15 +131,14 @@
       { num: 'G01', name: '登录', desc: '工号/密码登录，鉴权后按用户信息请求服务端工单', src: 'screens/01-login.html', layer: 'glasses' },
       { num: 'G02', name: '选择工单', desc: '展示服务端下发的待检工单，选择后进入执行', src: 'screens/02-work-order-list.html', layer: 'glasses' },
       { num: 'G03', name: '确认作业', desc: '核对工单信息后开始检查（拍照留底）', src: 'screens/03-work-order-confirm.html', layer: 'glasses' },
-      { num: 'G04', name: '预览开启 · 拍照', desc: '双目全彩预览，语音/按钮拍照', src: 'screens/04-inspection-preview-on.html', layer: 'glasses' },
-      { num: 'G05', name: '预览关闭 · 拍照', desc: '关闭预览释放视野，仍可全彩拍摄', src: 'screens/05-inspection-preview-off.html', layer: 'glasses' },
-      { num: 'G06', name: '传输至 APK', desc: '将本批照片经近场传输到手机 APK', src: 'screens/06-transfer-to-apk.html', layer: 'glasses' },
-      { num: 'G07', name: '传输完成', desc: '传图成功，可继续拍照或结束本单操作', src: 'screens/07-transfer-done.html', layer: 'glasses' },
-      { num: 'G08', name: '结束任务', desc: '眼镜侧作业结束，返回工单列表；正式归档由 APK 提交', src: 'screens/08-task-end.html', layer: 'glasses' },
+      { num: 'G04', name: '预览开启 · 拍照即传', desc: '双目全彩预览；拍完自动传 APK，无需确认', src: 'screens/04-inspection-preview-on.html', layer: 'glasses' },
+      { num: 'G05', name: '预览关闭 · 拍照即传', desc: '关闭预览仍可拍摄；拍完自动同步至 APK', src: 'screens/05-inspection-preview-off.html', layer: 'glasses' },
+      { num: 'G06', name: '拍后自动同步', desc: '单张瞬时反馈：已自动传至手机，可继续拍下一张', src: 'screens/06-auto-sync-toast.html', layer: 'glasses' },
+      { num: 'G08', name: '结束任务', desc: '眼镜侧结束；照片已在拍摄时同步，归档由 APK 提交', src: 'screens/08-task-end.html', layer: 'glasses' },
     ];
 
     const APK_SCREENS = [
-      { num: 'A01', name: '收图相册', desc: '按工单展示眼镜传来的图片列表', src: 'screens/apk/01-gallery.html', layer: 'apk', phone: true },
+      { num: 'A01', name: '收图相册', desc: '随拍随到，实时展示眼镜推送的图片', src: 'screens/apk/01-gallery.html', layer: 'apk', phone: true },
       { num: 'A02', name: '图片预览', desc: '放大、缩小、局部预览', src: 'screens/apk/02-preview.html', layer: 'apk', phone: true },
       { num: 'A03', name: '删除确认', desc: '删除误拍/不合格图片', src: 'screens/apk/03-delete.html', layer: 'apk', phone: true },
       { num: 'A04', name: '一键提交', desc: '调用服务端上传/提交，展示进度条', src: 'screens/apk/04-submit-progress.html', layer: 'apk', phone: true },
