@@ -4,35 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=640">
   <title>01 登录 — 眼镜端</title>
-  <link rel="stylesheet" href="../css/prototype.css?v=20260724c">
+  <link rel="stylesheet" href="../css/prototype.css?v=20260724d">
 </head>
 <body>
   <div class="glasses-screen glasses-screen--basic">
     <div class="glasses-screen__status">
-      <span><span class="glasses-screen__status-dot"></span>操作层 · 眼镜</span>
+      <span><span class="glasses-screen__status-dot"></span>眼镜</span>
       <span>09:32</span>
     </div>
-    <div class="glasses-screen__body">
-      <div class="glasses-screen__title">登录</div>
-      <div class="glasses-screen__content">
-        <div class="form-field">
-          <div class="form-field__label">工号</div>
-          <div class="form-field__input form-field__input--focus">QC00128</div>
+    <div class="glasses-screen__body glasses-screen__body--center">
+      <div class="g-stack">
+        <div class="g-title">登录</div>
+        <div class="g-field">
+          <div class="g-field__label">工号</div>
+          <div class="g-field__value g-field__value--focus">QC00128</div>
         </div>
-        <div class="form-field">
-          <div class="form-field__label">密码</div>
-          <div class="form-field__input form-field__input--masked">••••••••</div>
+        <div class="g-field">
+          <div class="g-field__label">密码</div>
+          <div class="g-field__value g-field__value--mask">••••••••</div>
         </div>
-        <p class="layer-hint">登录后按用户信息请求服务端工单接口</p>
       </div>
-      <div class="glasses-screen__footer">
-        <div class="glasses-screen__hint">● 确认 · 🎤「登录」</div>
-      </div>
+    </div>
+    <div class="glasses-screen__footer">
+      <div class="glasses-screen__hint">短按确认 · 可说「登录」</div>
     </div>
   </div>
   <div class="nav-buttons nav-buttons--screen">
-    <a class="nav-btn" href="../index.html">← 流程总览</a>
-    <a class="nav-btn" href="02-work-order-list.html">下一屏：工单列表 →</a>
+    <a class="nav-btn" href="../index.html">← 总览</a>
+    <a class="nav-btn" href="02-work-order-list.html">下一屏 →</a>
   </div>
   <script src="../js/flow-nav.js"></script>
 </body>

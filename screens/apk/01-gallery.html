@@ -3,36 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=360">
-  <title>A01 收图相册 — APK</title>
-  <link rel="stylesheet" href="../../css/prototype.css?v=20260724c">
+  <title>A01 相册 — APK</title>
+  <link rel="stylesheet" href="../../css/prototype.css?v=20260724d">
 </head>
 <body class="apk-page">
   <div class="phone-screen">
     <div class="phone-screen__status">
       <span>09:41</span>
-      <span>实时收图</span>
+      <span>APK</span>
     </div>
     <div class="phone-screen__header">
+      <div class="phone-screen__eyebrow">收图</div>
       <div class="phone-screen__title">工单相册</div>
-      <div class="phone-screen__sub">SH20250702001 · 已收 3 张 · 随拍随到</div>
+      <div class="phone-screen__sub">SH20250702001 · 3 张</div>
     </div>
     <div class="phone-screen__body">
-      <div class="apk-grid">
-        <a class="apk-thumb apk-thumb--active" href="02-preview.html">#1</a>
-        <a class="apk-thumb" href="02-preview.html">#2</a>
-        <a class="apk-thumb apk-thumb--new" href="02-preview.html">#3</a>
-      </div>
-      <p class="apk-hint">眼镜每拍一张即自动推送 · 无需眼镜端二次确认</p>
+      <section class="apk-section apk-section--grow">
+        <div class="apk-section__label">图片</div>
+        <div class="apk-grid">
+          <a class="apk-thumb apk-thumb--active" href="02-preview.html">#1</a>
+          <a class="apk-thumb" href="02-preview.html">#2</a>
+          <a class="apk-thumb apk-thumb--new" href="02-preview.html">#3</a>
+        </div>
+      </section>
+      <section class="apk-section">
+        <div class="apk-section__label">说明</div>
+        <p class="apk-hint">眼镜拍一张收一张 · 点图预览</p>
+      </section>
     </div>
     <div class="phone-screen__toolbar">
       <a class="apk-btn apk-btn--ghost" href="03-delete.html">删除</a>
-      <a class="apk-btn apk-btn--primary" href="04-submit-progress.html">一键提交</a>
+      <a class="apk-btn apk-btn--primary" href="04-submit-progress.html">提交</a>
     </div>
   </div>
   <div class="nav-buttons nav-buttons--phone">
-    <a class="nav-btn" href="../../index.html">← 流程总览</a>
-    <a class="nav-btn" href="../06-auto-sync-toast.html">← 眼镜拍后同步</a>
-    <a class="nav-btn" href="02-preview.html">下一屏：预览 →</a>
+    <a class="nav-btn" href="../../index.html">← 总览</a>
+    <a class="nav-btn" href="../06-auto-sync-toast.html">← 眼镜</a>
+    <a class="nav-btn" href="02-preview.html">预览 →</a>
   </div>
   <script src="../../js/flow-nav.js"></script>
 </body>

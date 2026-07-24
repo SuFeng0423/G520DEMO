@@ -3,41 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=360">
-  <title>A02 图片预览 — APK</title>
-  <link rel="stylesheet" href="../../css/prototype.css?v=20260724c">
+  <title>A02 预览 — APK</title>
+  <link rel="stylesheet" href="../../css/prototype.css?v=20260724d">
 </head>
 <body class="apk-page">
   <div class="phone-screen">
     <div class="phone-screen__status">
       <span>09:42</span>
-      <span>预览 · 2 / 3</span>
+      <span>2 / 3</span>
     </div>
     <div class="phone-screen__header">
+      <div class="phone-screen__eyebrow">检视</div>
       <div class="phone-screen__title">图片预览</div>
-      <div class="phone-screen__sub">放大 / 缩小 / 局部预览</div>
+      <div class="phone-screen__sub">放大 · 缩小 · 局部</div>
     </div>
     <div class="phone-screen__body">
-      <div class="apk-preview">
-        <div class="apk-preview__canvas">
-          <div class="apk-preview__img">全彩照片 #2</div>
-          <div class="apk-preview__loupe">局部</div>
+      <section class="apk-section apk-section--grow">
+        <div class="apk-section__label">画面</div>
+        <div class="apk-preview">
+          <div class="apk-preview__canvas">
+            <div class="apk-preview__img">照片 #2</div>
+            <div class="apk-preview__loupe">局部</div>
+          </div>
         </div>
+      </section>
+      <section class="apk-section">
+        <div class="apk-section__label">缩放</div>
         <div class="apk-zoom-bar">
           <span class="apk-zoom-bar__btn">−</span>
           <span class="apk-zoom-bar__label">125%</span>
           <span class="apk-zoom-bar__btn">+</span>
         </div>
-      </div>
-      <p class="apk-hint">双指缩放 · 长按拖移局部框</p>
+      </section>
     </div>
     <div class="phone-screen__toolbar">
-      <a class="apk-btn apk-btn--ghost" href="01-gallery.html">返回相册</a>
-      <a class="apk-btn apk-btn--danger" href="03-delete.html">删除此图</a>
+      <a class="apk-btn apk-btn--ghost" href="01-gallery.html">返回</a>
+      <a class="apk-btn apk-btn--danger" href="03-delete.html">删除</a>
     </div>
   </div>
   <div class="nav-buttons nav-buttons--phone">
     <a class="nav-btn" href="01-gallery.html">← 相册</a>
-    <a class="nav-btn" href="03-delete.html">下一屏：删除 →</a>
+    <a class="nav-btn" href="03-delete.html">删除 →</a>
   </div>
   <script src="../../js/flow-nav.js"></script>
 </body>

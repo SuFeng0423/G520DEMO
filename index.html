@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <title>智能眼镜 · 目视检查 — 三端原型总览</title>
-  <link rel="stylesheet" href="./css/index.css?v=20260724c">
+  <link rel="stylesheet" href="./css/index.css?v=20260724d">
 </head>
 <body class="index-page">
   <div class="flow-overview">
@@ -128,21 +128,21 @@
 
   <script>
     const GLASSES_SCREENS = [
-      { num: 'G01', name: '登录', desc: '工号/密码登录，鉴权后按用户信息请求服务端工单', src: 'screens/01-login.html', layer: 'glasses' },
-      { num: 'G02', name: '选择工单', desc: '展示服务端下发的待检工单，选择后进入执行', src: 'screens/02-work-order-list.html', layer: 'glasses' },
-      { num: 'G03', name: '确认作业', desc: '核对工单信息后开始检查（拍照留底）', src: 'screens/03-work-order-confirm.html', layer: 'glasses' },
-      { num: 'G04', name: '预览开启 · 拍照即传', desc: '双目全彩预览；拍完自动传 APK，无需确认', src: 'screens/04-inspection-preview-on.html', layer: 'glasses' },
-      { num: 'G05', name: '预览关闭 · 拍照即传', desc: '关闭预览仍可拍摄；拍完自动同步至 APK', src: 'screens/05-inspection-preview-off.html', layer: 'glasses' },
-      { num: 'G06', name: '拍后自动同步', desc: '单张瞬时反馈：已自动传至手机，可继续拍下一张', src: 'screens/06-auto-sync-toast.html', layer: 'glasses' },
-      { num: 'G08', name: '结束任务', desc: '眼镜侧结束；照片已在拍摄时同步，归档由 APK 提交', src: 'screens/08-task-end.html', layer: 'glasses' },
+      { num: 'G01', name: '登录', desc: '居中登录，文案精简', src: 'screens/01-login.html', layer: 'glasses' },
+      { num: 'G02', name: '选择工单', desc: '居中列表选择待办工单', src: 'screens/02-work-order-list.html', layer: 'glasses' },
+      { num: 'G03', name: '确认作业', desc: '核对关键信息后开始', src: 'screens/03-work-order-confirm.html', layer: 'glasses' },
+      { num: 'G04', name: '拍照', desc: '预览开 · 拍完自动同步', src: 'screens/04-inspection-preview-on.html', layer: 'glasses' },
+      { num: 'G05', name: '待命拍照', desc: '预览关 · 短反馈已同步', src: 'screens/05-inspection-preview-off.html', layer: 'glasses' },
+      { num: 'G06', name: '自动同步', desc: '拍后瞬时反馈，无需确认', src: 'screens/06-auto-sync-toast.html', layer: 'glasses' },
+      { num: 'G08', name: '结束任务', desc: '本单完成，归档转 APK', src: 'screens/08-task-end.html', layer: 'glasses' },
     ];
 
     const APK_SCREENS = [
-      { num: 'A01', name: '收图相册', desc: '随拍随到，实时展示眼镜推送的图片', src: 'screens/apk/01-gallery.html', layer: 'apk', phone: true },
-      { num: 'A02', name: '图片预览', desc: '放大、缩小、局部预览', src: 'screens/apk/02-preview.html', layer: 'apk', phone: true },
-      { num: 'A03', name: '删除确认', desc: '删除误拍/不合格图片', src: 'screens/apk/03-delete.html', layer: 'apk', phone: true },
-      { num: 'A04', name: '一键提交', desc: '调用服务端上传/提交，展示进度条', src: 'screens/apk/04-submit-progress.html', layer: 'apk', phone: true },
-      { num: 'A05', name: '提交完成', desc: '服务端归档成功，本单闭环', src: 'screens/apk/05-submit-done.html', layer: 'apk', phone: true },
+      { num: 'A01', name: '收图相册', desc: '分区：图片 / 说明 / 底部操作', src: 'screens/apk/01-gallery.html', layer: 'apk', phone: true },
+      { num: 'A02', name: '图片预览', desc: '分区：画面 / 缩放 / 删除返回', src: 'screens/apk/02-preview.html', layer: 'apk', phone: true },
+      { num: 'A03', name: '删除确认', desc: '管理分区 · 明确危险操作', src: 'screens/apk/03-delete.html', layer: 'apk', phone: true },
+      { num: 'A04', name: '一键提交', desc: '分区：单据信息 / 进度', src: 'screens/apk/04-submit-progress.html', layer: 'apk', phone: true },
+      { num: 'A05', name: '提交完成', desc: '归档结果居中反馈', src: 'screens/apk/05-submit-done.html', layer: 'apk', phone: true },
     ];
 
     function renderScreens(list, containerId) {
