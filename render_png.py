@@ -9,7 +9,6 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent
 PNG_DIR = ROOT / "png"
-AI_PNG_DIR = PNG_DIR / "ai"
 
 SCREEN_W, SCREEN_H = 640, 400
 SCALE = 2  # 2× 超采样，导出后缩放至目标尺寸，字体更清晰
@@ -26,8 +25,6 @@ WHEEL = (201, 160, 255)
 BTN = (255, 159, 67)
 WARN = (255, 176, 32)
 DANGER = (255, 92, 92)
-AI_COLOR = (157, 143, 255)
-AI_BORDER = (124, 108, 240)
 
 FOOTER_TOP = 348
 INTERACTION_Y = 356
@@ -310,152 +307,8 @@ def export_flow_overview():
     save_hd(img, PNG_DIR / "00-流程总览.png")
 
 
-# ── AI 版导出 ──
-
-def export_ai_hub():
-    img, d = new_screen()
-    draw_status(d, "SH20250702001 · AI 辅助", "目视检查", AI_COLOR)
-    draw_title(d, "AI 辅助功能", "滚轮选择 · 按钮进入 · 可说「打开第 N 项」", AI_COLOR)
-    items = [
-        ("#", "紧固件视觉计数", "大数量紧固件自动计数，需保证准确率", True),
-        ("文", "外文证书视觉翻译", "外文厂家证书拍照即译", False),
-        ("票", "外文发票信息捕捉", "PO、件号、数量等关键字段提取", False),
-        ("库", "数据关联·设备端入库", "系统比对后编辑并生成入库数据", False),
-    ]
-    y = 76
-    for icon, title, desc, sel in items:
-        c = AI_BORDER if sel else BORDER
-        bg = (30, 25, 50) if sel else PANEL
-        d.rounded_rectangle([_s(16), _s(y), _s(624), _s(y + 48)], radius=_s(2), outline=c, fill=bg)
-        d.rounded_rectangle([_s(24), _s(y + 10), _s(52), _s(y + 38)], radius=_s(3), fill=(40, 35, 65))
-        d.text((_s(32), _s(y + 16)), icon, fill=AI_COLOR, font=F_SM)
-        d.text((_s(58), _s(y + 8)), title, fill=TEXT, font=F_SM)
-        d.text((_s(58), _s(y + 26)), desc, fill=DIM, font=F_XXS)
-        y += 54
-    draw_interaction_bar(d, [
-        ("滚轮: 选择功能", WHEEL),
-        ("按钮: 进入", BTN),
-        ("AI: 开始计数", AI_COLOR),
-    ])
-    save_hd(img, AI_PNG_DIR / "09-AI辅助入口.png")
-
-
-def export_ai_count():
-    img, d = new_screen()
-    draw_status(d, "AI · 紧固件计数", "识别中", AI_COLOR)
-    draw_title(d, "紧固件视觉计数", "准确率 >= 98%", AI_COLOR)
-    d.rounded_rectangle([_s(16), _s(72), _s(340), _s(280)], radius=_s(2), outline=BORDER, fill=PANEL)
-    d.text((_s(100), _s(160)), "[ 拍摄画面 ]", fill=DIM, font=F_XS)
-    d.text((_s(90), _s(180)), "检测框 x128", fill=AI_COLOR, font=F_XXS)
-    d.text((_s(400), _s(100)), "128", fill=AI_COLOR, font=F_HUGE)
-    d.text((_s(370), _s(155)), "识别数量(个)", fill=DIM, font=F_XS)
-    d.text((_s(360), _s(178)), "置信度 98.6% · 准确率>=98%", fill=ACCENT, font=F_XXS)
-    d.rounded_rectangle([_s(360), _s(200), _s(624), _s(248)], radius=_s(2), outline=AI_BORDER, fill=(30, 25, 50))
-    d.text((_s(372), _s(208)), "工单要求", fill=DIM, font=F_XXS)
-    d.text((_s(372), _s(224)), "应到 130 个 · 差 -2", fill=TEXT, font=F_SM)
-    draw_interaction_bar(d, [
-        ("滚轮: 修正数量", WHEEL),
-        ("短按: 确认  长按: 重拍", BTN),
-        ("AI: 确认128个", AI_COLOR),
-    ])
-    save_hd(img, AI_PNG_DIR / "10-紧固件视觉计数.png")
-
-
-def export_ai_translate():
-    img, d = new_screen()
-    draw_status(d, "AI · 证书翻译", "DE -> 中文", AI_COLOR)
-    draw_title(d, "外文厂家证书 · 视觉翻译", "", AI_COLOR)
-    d.rounded_rectangle([_s(16), _s(68), _s(310), _s(290)], radius=_s(2), outline=BORDER, fill=PANEL)
-    d.text((_s(80), _s(160)), "[ 外文证书原图 ]", fill=DIM, font=F_XS)
-    d.text((_s(60), _s(185)), "Quality Certificate", fill=DIM, font=F_XXS)
-    d.rounded_rectangle([_s(322), _s(68), _s(624), _s(290)], radius=_s(2), outline=AI_BORDER, fill=(30, 25, 50))
-    d.text((_s(334), _s(76)), "翻译结果", fill=AI_COLOR, font=F_XXS)
-    lines = ["质量合格证", "制造商: Bosch Automotive GmbH", "批次号: QC-2025-0412",
-             "检验日期: 2025-04-12", "结论: 符合 DIN EN ISO 9001"]
-    y = 96
-    for line in lines:
-        d.text((_s(334), _s(y)), line, fill=TEXT, font=F_XS)
-        y += 22
-    draw_interaction_bar(d, [
-        ("滚轮: 滚动译文", WHEEL),
-        ("按钮: 保存留底", BTN),
-        ("AI: 重新翻译", AI_COLOR),
-    ])
-    save_hd(img, AI_PNG_DIR / "11-外文证书翻译.png")
-
-
-def export_ai_invoice():
-    img, d = new_screen()
-    draw_status(d, "AI · 发票识别", "多格式", AI_COLOR)
-    draw_title(d, "外文发票 · 关键信息捕捉", "PO / 件号 / 数量 等字段自动提取", AI_COLOR)
-    d.rounded_rectangle([_s(16), _s(72), _s(156), _s(172)], radius=_s(2), outline=BORDER, fill=PANEL)
-    d.text((_s(50), _s(115)), "[ Invoice ]", fill=DIM, font=F_XS)
-    d.text((_s(170), _s(80)), "已识别 6 个关键字段", fill=DIM, font=F_XXS)
-    fields = [
-        ("PO", "PO-2025-88421", ACCENT, True),
-        ("件号", "PN A-1024-B", ACCENT, False),
-        ("数量", "500 EA", ACCENT, False),
-        ("供应商", "Bosch Auto GmbH", WARN, False),
-    ]
-    y = 100
-    for lb, val, st_color, focus in fields:
-        c = ACCENT if focus else BORDER
-        d.rounded_rectangle([_s(16), _s(y), _s(624), _s(y + 28)], radius=_s(2), outline=c, fill=PANEL)
-        d.text((_s(24), _s(y + 7)), lb, fill=DIM, font=F_XXS)
-        d.text((_s(80), _s(y + 7)), val, fill=TEXT, font=F_XS)
-        mark = "OK" if st_color == ACCENT else "?"
-        d.text((_s(600), _s(y + 7)), mark, fill=st_color, font=F_XXS)
-        y += 32
-    draw_interaction_bar(d, [
-        ("滚轮: 切换/编辑字段", WHEEL),
-        ("按钮: 下一步比对", BTN),
-        ("AI: 修正件号", AI_COLOR),
-    ])
-    save_hd(img, AI_PNG_DIR / "12-外文发票识别.png")
-
-
-def export_ai_entry():
-    img, d = new_screen()
-    draw_status(d, "AI · 入库编辑", "比对完成", AI_COLOR)
-    draw_title(d, "系统数据关联 · 设备端入库", "生成与电脑录入一致的数据", AI_COLOR)
-    d.rounded_rectangle([_s(16), _s(68), _s(624), _s(100)], radius=_s(2), outline=AI_BORDER, fill=(30, 25, 50))
-    d.text((_s(24), _s(74)), "收货系统匹配", fill=DIM, font=F_XXS)
-    d.text((_s(24), _s(88)), "SH20250702001 · 第2行 · 匹配 96%", fill=AI_COLOR, font=F_XS)
-    fields = [
-        ("PO", "PO-2025-88421", "一致", ACCENT),
-        ("件号", "A-1024-B -> A-1024", "已映射", WARN),
-        ("数量", "500", "一致", ACCENT),
-        ("备注", "滚轮编辑 / 语音输入", "", DIM),
-    ]
-    y = 108
-    for lb, val, st, st_color in fields:
-        d.rounded_rectangle([_s(16), _s(y), _s(624), _s(y + 28)], radius=_s(2), outline=BORDER, fill=PANEL)
-        d.text((_s(24), _s(y + 7)), lb, fill=DIM, font=F_XXS)
-        d.text((_s(80), _s(y + 7)), val, fill=TEXT, font=F_XS)
-        if st:
-            d.text((_s(560), _s(y + 7)), st, fill=st_color, font=F_XXS)
-        y += 32
-    d.text((_s(160), _s(280)), "确认后将生成标准入库数据并提交收货系统", fill=ACCENT, font=F_XXS)
-    draw_interaction_bar(d, [
-        ("滚轮: 编辑字段", WHEEL),
-        ("按钮: 确认入库", BTN),
-        ("AI: 确认入库", AI_COLOR),
-    ])
-    save_hd(img, AI_PNG_DIR / "13-数据关联入库.png")
-
-
-def export_ai_flow():
-    w, h = _s(1200), _s(400)
-    img = Image.new("RGB", (w, h), BG)
-    d = ImageDraw.Draw(img)
-    d.text((_s(480), _s(16)), "AI 算法版 · 目视检查辅助流程", fill=AI_COLOR, font=F_MD)
-    d.text((_s(40), _s(320)), "屏幕规格: 640 x 400  |  AI: 计数/翻译/发票/入库", fill=TEXT, font=F_SM)
-    save_hd(img, AI_PNG_DIR / "00-AI流程总览.png")
-
-
 def main():
     PNG_DIR.mkdir(parents=True, exist_ok=True)
-    AI_PNG_DIR.mkdir(parents=True, exist_ok=True)
     export_login()
     export_work_list()
     export_confirm()
@@ -465,14 +318,7 @@ def main():
     export_match_ok()
     export_match_fail()
     export_flow_overview()
-    export_ai_hub()
-    export_ai_count()
-    export_ai_translate()
-    export_ai_invoice()
-    export_ai_entry()
-    export_ai_flow()
     print(f"已导出标准版 9 张 -> {PNG_DIR}")
-    print(f"已导出 AI 版 6 张 -> {AI_PNG_DIR}")
 
 
 if __name__ == "__main__":

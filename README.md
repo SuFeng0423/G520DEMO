@@ -1,6 +1,6 @@
 # 智能眼镜 · 目视检查原型
 
-640×400 智能眼镜 UI 原型，含基础版（拍照留底）与增强版（AI 辅助）两套流程。
+640×400 智能眼镜 UI 原型（拍照留底流程）。
 
 ## 在线访问
 
@@ -8,8 +8,10 @@
 
 ### 临时预览（免部署）
 
+> `htmlpreview.github.io` **只支持 GitHub / Bitbucket**，不支持 Gitee（会 CORS + 常 404）。请用下方 GitHub 地址：
+
 ```
-https://htmlpreview.github.io/?https://gitee.com/sf_0423/g520-demo/raw/master/index.html
+https://htmlpreview.github.io/?https://github.com/SuFeng0423/G520DEMO/blob/main/index.html
 ```
 
 ### 正式访问（GitHub Pages）
@@ -34,6 +36,5 @@ python3 -m http.server 8080
 ## 结构
 
 - `index.html` — 流程总览与入口
-- `screens/` — 基础版各屏
-- `screens/ai/` — 增强版各屏
+- `screens/` — 各流程屏
 - `css/`、`js/` — 样式与流程导航
