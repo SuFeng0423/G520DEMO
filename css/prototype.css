@@ -1,20 +1,23 @@
 /* 智能眼镜原型 — 640×400 固定视口 */
 :root {
-  --bg: #0a0e14;
-  --panel: #141b24;
-  --border: #2a3a4d;
-  --accent: #00d4aa;
-  --accent-dim: #007a62;
+  /* GAMECO 官网色系：深蓝底 + 天蓝强调 https://www.gameco.com.cn/ */
+  --bg: #0a1a33;
+  --panel: #122a4d;
+  --border: #2a4a72;
+  --accent: #03a9ee;
+  --accent-dim: #1556b7;
+  --accent-light: #66ccff;
   --warn: #ffb020;
   --danger: #ff5c5c;
-  --text: #e8eef4;
-  --text-dim: #8a9bb0;
-  --voice: #6eb5ff;
-  --wheel: #c9a0ff;
-  --btn: #ff9f43;
-  --preview-bg: #1a2530;
+  --text: #f2f7fc;
+  --text-dim: #9bb4cc;
+  --voice: #66ccff;
+  --wheel: #8ec8ff;
+  --btn: #03a9ee;
+  --preview-bg: #0f274b;
   --font: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
-  --basic: #00d4aa;
+  --brand-serif: "Times New Roman", "Songti SC", Georgia, serif;
+  --basic: #03a9ee;
 }
 
 /* 版本标识 */
@@ -23,7 +26,7 @@
 }
 
 .glasses-screen--basic .glasses-screen__status {
-  background: rgba(0, 212, 170, 0.06);
+  background: rgba(3, 169, 238, 0.06);
 }
 
 .glasses-screen--basic .glasses-screen__title { color: var(--basic); }
@@ -40,7 +43,7 @@
   font-weight: 700;
   color: var(--accent);
   border: 2px solid var(--accent);
-  background: rgba(0, 212, 170, 0.1);
+  background: rgba(3, 169, 238, 0.1);
 }
 
 .flow-complete-icon--done {
@@ -62,7 +65,7 @@
 .version-pill--basic {
   border: 1px solid var(--basic);
   color: var(--basic);
-  background: rgba(0, 212, 170, 0.1);
+  background: rgba(3, 169, 238, 0.1);
 }
 
 .binocular-badge {
@@ -82,7 +85,7 @@
 
 body {
   font-family: var(--font);
-  background: #1a1a2e;
+  background: #071426;
   color: var(--text);
   min-height: 100vh;
   display: flex;
@@ -283,7 +286,7 @@ body {
 
 .list-item--selected {
   border-color: var(--accent);
-  background: rgba(0, 212, 170, 0.08);
+  background: rgba(3, 169, 238, 0.08);
 }
 
 .list-item__badge {
@@ -500,7 +503,7 @@ body {
 .match-badge--success {
   color: var(--accent);
   border: 1px solid var(--accent);
-  background: rgba(0, 212, 170, 0.1);
+  background: rgba(3, 169, 238, 0.1);
 }
 
 .match-badge--fail {
@@ -523,7 +526,7 @@ body {
 
 .candidate-item--selected {
   border-color: var(--accent);
-  background: rgba(0, 212, 170, 0.08);
+  background: rgba(3, 169, 238, 0.08);
 }
 
 /* 主视野提示 */
@@ -713,7 +716,7 @@ body.apk-page .flow-walkthrough {
 
 .flow-walkthrough__step--active {
   color: var(--text);
-  background: rgba(0, 212, 170, 0.15);
+  background: rgba(3, 169, 238, 0.15);
   font-weight: 600;
 }
 
@@ -748,8 +751,8 @@ body.apk-page .flow-walkthrough {
 :root {
   --device-radius: 8px;
   --device-accent: var(--accent);
-  --device-accent-soft: rgba(0, 212, 170, 0.12);
-  --device-accent-border: rgba(0, 212, 170, 0.45);
+  --device-accent-soft: rgba(3, 169, 238, 0.12);
+  --device-accent-border: rgba(3, 169, 238, 0.45);
 }
 
 .layer-hint { display: none; }
@@ -857,7 +860,7 @@ body.apk-page .flow-walkthrough {
 
 .g-field__value--focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 1px rgba(0, 212, 170, 0.25);
+  box-shadow: 0 0 0 1px rgba(3, 169, 238, 0.25);
 }
 
 .g-field__value--mask {
@@ -1014,7 +1017,7 @@ body.apk-page .flow-walkthrough {
 
 /* APK：同色系 + 分区 */
 body.apk-page {
-  background: #12161e;
+  background: #071426;
 }
 
 .phone-screen {
@@ -1131,7 +1134,7 @@ body.apk-page {
 
 .apk-thumb--active {
   border-color: var(--accent);
-  box-shadow: inset 0 0 0 1px rgba(0, 212, 170, 0.28);
+  box-shadow: inset 0 0 0 1px rgba(3, 169, 238, 0.28);
 }
 
 .apk-thumb--new {
@@ -1148,7 +1151,7 @@ body.apk-page {
   padding: 1px 4px;
   border-radius: 2px;
   background: var(--accent);
-  color: #04241c;
+  color: #041525;
 }
 
 .apk-hint {
@@ -1170,7 +1173,7 @@ body.apk-page {
 
 .apk-btn--primary {
   background: var(--accent);
-  color: #04241c;
+  color: #041525;
 }
 
 .apk-btn--ghost {
@@ -1218,7 +1221,7 @@ body.apk-page {
 .apk-preview__img {
   position: absolute;
   inset: 14% 10%;
-  border: 1px dashed rgba(0, 212, 170, 0.35);
+  border: 1px dashed rgba(3, 169, 238, 0.35);
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -1236,7 +1239,7 @@ body.apk-page {
   height: 72px;
   border-radius: 50%;
   border: 2px solid var(--accent);
-  background: rgba(0, 212, 170, 0.1);
+  background: rgba(3, 169, 238, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1334,3 +1337,58 @@ body.apk-page {
 }
 
 .apk-done .complete-title { color: var(--accent); }
+
+
+/* GAMECO 品牌标识 */
+.brand-logo {
+  height: 14px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+  opacity: 0.92;
+}
+
+.brand-logo--lg {
+  height: 18px;
+}
+
+.brand-mark {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 10px solid var(--accent);
+  margin-right: 6px;
+  vertical-align: -1px;
+  position: relative;
+}
+
+.brand-mark::before,
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.brand-mark::before {
+  left: -5px;
+  top: 4px;
+  border-width: 0 5px 8px 5px;
+  border-color: transparent transparent var(--bg) transparent;
+}
+
+.g-title--brand {
+  font-family: var(--brand-serif);
+  letter-spacing: 1.5px;
+  font-weight: 700;
+}
+
+.glasses-screen__status-brand,
+.phone-screen__status-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}

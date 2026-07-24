@@ -6,12 +6,12 @@
   --page-border: #d8dee8;
   --page-text: #1a2332;
   --page-text-muted: #5a6a7e;
-  --page-accent: #007a62;
-  --zone-dark-bg: #0a0e14;
-  --zone-dark-border: #2a3a4d;
-  --layer-server: #2f6fed;
-  --layer-apk: #c7771f;
-  --layer-glasses: #007a62;
+  --page-accent: #1556b7;
+  --zone-dark-bg: #0a1a33;
+  --zone-dark-border: #2a4a72;
+  --layer-server: #1556b7;
+  --layer-apk: #03a9ee;
+  --layer-glasses: #03a9ee;
   --font: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
 }
 
@@ -236,15 +236,15 @@ a.flow-entry__btn:hover {
 }
 
 .index-page .flow-step--apk {
-  border-color: rgba(199, 119, 31, 0.4);
+  border-color: rgba(3, 169, 238, 0.4);
   color: var(--layer-apk);
-  background: rgba(199, 119, 31, 0.08);
+  background: rgba(3, 169, 238, 0.08);
 }
 
 .index-page .flow-step--glasses {
-  border-color: rgba(0, 122, 98, 0.4);
+  border-color: rgba(21, 86, 183, 0.4);
   color: var(--layer-glasses);
-  background: rgba(0, 122, 98, 0.08);
+  background: rgba(21, 86, 183, 0.08);
 }
 
 .index-page .flow-arrow {
@@ -372,15 +372,15 @@ a.flow-entry__btn:hover {
   padding: 20px;
   display: flex;
   justify-content: center;
-  box-shadow: inset 0 0 0 1px rgba(0, 122, 98, 0.2);
+  box-shadow: inset 0 0 0 1px rgba(21, 86, 183, 0.2);
 }
 
 .index-page .screen-card--apk .screen-card__preview {
-  box-shadow: inset 0 0 0 1px rgba(199, 119, 31, 0.25);
+  box-shadow: inset 0 0 0 1px rgba(3, 169, 238, 0.25);
 }
 
 .index-page .screen-card__preview iframe {
-  border: 2px solid rgba(0, 212, 170, 0.35);
+  border: 2px solid rgba(3, 169, 238, 0.35);
   border-radius: 4px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
   background: #1a1a2e;
@@ -388,7 +388,7 @@ a.flow-entry__btn:hover {
 }
 
 .index-page .screen-card__preview--phone iframe {
-  border-color: rgba(255, 159, 67, 0.45);
+  border-color: rgba(102, 204, 255, 0.45);
   border-radius: 12px;
 }
 
@@ -432,4 +432,54 @@ a.flow-entry__btn:hover {
   padding: 1px 5px;
   border-radius: 3px;
   font-size: 11px;
+}
+
+/* GAMECO 品牌条 */
+.index-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.index-brand__mark {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 14px solid #1556b7;
+}
+
+.index-brand__name {
+  font-family: "Times New Roman", "Songti SC", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  font-size: 18px;
+  color: #0f274b;
+}
+
+.index-brand__sep {
+  color: #c5d0de;
+}
+
+.index-brand__tag {
+  font-size: 12px;
+  color: var(--page-text-muted);
+}
+
+a.flow-entry__btn {
+  background: #1556b7;
+  border-color: #1556b7;
+}
+
+a.flow-entry__btn--secondary {
+  color: #0f274b;
+  border-color: #b7c8de;
+}
+
+.index-page .logic-note h3,
+.index-page .spec-note h3,
+.index-page .screen-card__num,
+.index-page .screen-card__link {
+  color: #1556b7;
 }

@@ -4,13 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <title>智能眼镜 · 目视检查 — 三端原型总览</title>
-  <link rel="stylesheet" href="./css/index.css?v=20260724d">
+  <link rel="stylesheet" href="./css/index.css?v=20260724e">
 </head>
 <body class="index-page">
   <div class="flow-overview">
     <div class="index-page__hero">
+      <div class="index-brand">
+        <span class="index-brand__mark" aria-hidden="true"></span>
+        <span class="index-brand__name">GAMECO</span>
+        <span class="index-brand__sep">|</span>
+        <span class="index-brand__tag">目视检查原型</span>
+      </div>
       <h1>智能眼镜 · 通用目视检查 — 项目原型</h1>
-      <p>流程与设备端分为三部分：<strong>服务端（数据层）</strong>、<strong>APK 端（预览层）</strong>、<strong>眼镜端（操作层）</strong></p>
+      <p>GAMECO 场景原型 · 服务端（数据层）/ APK（预览层）/ 眼镜端（操作层）</p>
       <div class="flow-entry">
         <a class="flow-entry__btn" href="screens/01-login.html?flow=full">体验完整流程 →</a>
         <a class="flow-entry__btn flow-entry__btn--secondary" href="#layer-glasses">仅看眼镜端</a>
@@ -76,26 +82,26 @@
       <div class="zone-dark__label">▸ 三端数据流</div>
       <div class="interaction-map">
         <svg viewBox="0 0 1100 220" xmlns="http://www.w3.org/2000/svg">
-          <rect width="1100" height="220" fill="#0a0e14"/>
+          <rect width="1100" height="220" fill="#0a1a33"/>
           <text x="550" y="28" text-anchor="middle" fill="#8a9bb0" font-size="13" font-family="PingFang SC,sans-serif">服务端 ← 工单/上传/提交 → APK ← 图片传输 → 眼镜端</text>
 
-          <rect x="40" y="60" width="280" height="100" rx="6" fill="#141b24" stroke="#6eb5ff"/>
+          <rect x="40" y="60" width="280" height="100" rx="6" fill="#122a4d" stroke="#6eb5ff"/>
           <text x="180" y="88" text-anchor="middle" fill="#6eb5ff" font-size="13" font-family="PingFang SC,sans-serif">服务端 · 数据层</text>
           <text x="180" y="112" text-anchor="middle" fill="#e8eef4" font-size="11" font-family="PingFang SC,sans-serif">云宏方：工单 / 上传 / 提交</text>
           <text x="180" y="136" text-anchor="middle" fill="#8a9bb0" font-size="10" font-family="PingFang SC,sans-serif">无本端操作 UI</text>
 
-          <rect x="400" y="60" width="280" height="100" rx="6" fill="#141b24" stroke="#ff9f43"/>
-          <text x="540" y="88" text-anchor="middle" fill="#ff9f43" font-size="13" font-family="PingFang SC,sans-serif">APK · 预览层</text>
+          <rect x="400" y="60" width="280" height="100" rx="6" fill="#122a4d" stroke="#03a9ee"/>
+          <text x="540" y="88" text-anchor="middle" fill="#03a9ee" font-size="13" font-family="PingFang SC,sans-serif">APK · 预览层</text>
           <text x="540" y="112" text-anchor="middle" fill="#e8eef4" font-size="11" font-family="PingFang SC,sans-serif">随拍随收 · 缩放/局部 · 删除</text>
           <text x="540" y="136" text-anchor="middle" fill="#e8eef4" font-size="11" font-family="PingFang SC,sans-serif">一键提交 + 进度条</text>
 
-          <rect x="760" y="60" width="280" height="100" rx="6" fill="#141b24" stroke="#00d4aa"/>
-          <text x="900" y="88" text-anchor="middle" fill="#00d4aa" font-size="13" font-family="PingFang SC,sans-serif">眼镜端 · 操作层</text>
+          <rect x="760" y="60" width="280" height="100" rx="6" fill="#122a4d" stroke="#66ccff"/>
+          <text x="900" y="88" text-anchor="middle" fill="#66ccff" font-size="13" font-family="PingFang SC,sans-serif">眼镜端 · 操作层</text>
           <text x="900" y="112" text-anchor="middle" fill="#e8eef4" font-size="11" font-family="PingFang SC,sans-serif">登录 · 选工单 · 执行</text>
           <text x="900" y="136" text-anchor="middle" fill="#e8eef4" font-size="11" font-family="PingFang SC,sans-serif">拍照即自动传 APK</text>
 
           <path d="M320 110 H390" stroke="#6eb5ff" stroke-width="2" marker-end="url(#arrow)"/>
-          <path d="M680 110 H750" stroke="#00d4aa" stroke-width="2"/>
+          <path d="M680 110 H750" stroke="#66ccff" stroke-width="2"/>
           <text x="550" y="190" text-anchor="middle" fill="#8a9bb0" font-size="11" font-family="PingFang SC,sans-serif">眼镜拍一张传一张（无确认）· APK 调用服务端归档</text>
         </svg>
       </div>
